@@ -1,26 +1,127 @@
 @import "tailwindcss";
+@config "../tailwind.config.ts";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy-shadow: rgba(2, 12, 27, 0.7);
+  --background-color: #0a192f;
+  --lightest-navy: #233554;
+  --light-navy: #112240;
+  --dark-slate: #495670;
+  --slate: #8892b0;
+  --light-slate: #ccd6f6;
+  --lightest-slate: #a8b2d1;
+  --theme-color: #9d00ff;
+
+  /* Cyberpunk Dark Background */
+  --background: 230 35% 7%;
+  --foreground: 180 100% 90%;
+
+  /* Neon Cyan Primary */
+  --primary: 185 100% 50%;
+  --primary-foreground: 230 35% 7%;
+  --primary-glow: 185 100% 70%;
+
+  /* Magenta Secondary */
+  --secondary: 330 100% 50%;
+  --secondary-foreground: 230 35% 7%;
+  --secondary-glow: 330 100% 70%;
+
+  /* Violet Accent */
+  --accent: 270 80% 60%;
+  --accent-foreground: 230 35% 7%;
+  --accent-glow: 270 80% 75%;
+
+  /* Card & Surface */
+  --card: 230 30% 10%;
+  --card-foreground: 180 100% 90%;
+  --card-glow: 230 30% 15%;
+
+  /* Popover */
+  --popover: 230 30% 12%;
+  --popover-foreground: 180 100% 90%;
+
+  /* Muted */
+  --muted: 230 20% 20%;
+  --muted-foreground: 180 50% 60%;
+
+  /* Destructive */
+  --destructive: 0 90% 60%;
+  --destructive-foreground: 230 35% 7%;
+
+  /* Border & Input */
+  --border: 185 100% 50%;
+  --input: 230 30% 15%;
+  --ring: 185 100% 50%;
+
+  /* Gradients */
+  --gradient-cyber: linear-gradient(135deg, hsl(185, 100%, 50%), hsl(330, 100%, 50%));
+  --gradient-neon: linear-gradient(90deg, hsl(185, 100%, 50%), hsl(270, 80%, 60%));
+  --gradient-depth: linear-gradient(180deg, hsl(230, 35%, 7%), hsl(230, 40%, 3%));
+  --gradient-glow: radial-gradient(circle, hsl(185, 100%, 50% / 0.3), transparent 70%);
+
+  /* Glow Shadows */
+  --glow-cyan: 0 0 20px hsl(185, 100%, 50% / 0.5), 0 0 40px hsl(185, 100%, 50% / 0.3);
+  --glow-magenta: 0 0 20px hsl(330, 100%, 50% / 0.5), 0 0 40px hsl(330, 100%, 50% / 0.3);
+  --glow-violet: 0 0 20px hsl(270, 80%, 60% / 0.5), 0 0 40px hsl(270, 80%, 60% / 0.3);
+
+  /* Animation Timing */
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --radius: 0.75rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+::-moz-selection {
+  color: white;
+  background: var(--theme-color);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+::selection {
+  color: white;
+  background: var(--theme-color);
+}
+
+html,
+body {
+  scroll-behavior: smooth !important;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background-color);
+  counter-reset: title;
+}
+
+main {
+  transition: 0.3s ease-in-out;
+}
+
+.blur {
+  filter: blur(10px);
+  pointer-events: none;
+  user-select: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--dark-slate) var(--background-color);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--dark-slate);
+  border: 3px solid var(--background-color);
+  border-radius: 10px;
 }

@@ -48,7 +48,7 @@ export default function RootLayout({
       >
         {showContent && (
         <>
-          {/* <Navbar /> */}
+          <Navbar />
           <SocialIcons />
           <Email />
           <main>

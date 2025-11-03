@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { FiGithub, FiInstagram, FiLinkedin } from "react-icons/fi";
+import { FiGithub, FiInstagram, FiLinkedin, FiFacebook } from "react-icons/fi";
 import { FaXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
@@ -22,6 +22,11 @@ function SocialIcons() {
       icon: <FaXTwitter />,
       link: "https://x.com/skuperr",
     },
+    {
+      name: "Facebook",
+      icon: <FiFacebook />,
+      link: "https://facebook.com/skupperr",
+    },
   ];
 
   return (
@@ -29,12 +34,12 @@ function SocialIcons() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{
-        duration: 0.3,
+        duration: 0.4,
         ease: "easeInOut",
-        delay: 1.95,
+        delay: 0.5,
       }}
       className="
-        fixed bottom-0 left-16
+        fixed bottom-0 left-16 z-50
         max-[1080px]:left-8
         max-[768px]:hidden
       "
@@ -64,9 +69,7 @@ function SocialIcons() {
                 outline-dashed outline-2 outline-transparent text-[23px]
                 hover:text-secondary focus:outline-secondary focus:-translate-y-1 focus:text-secondary
                 w-10 h-10 border rounded-full items-center inline-flex justify-center
-
                 relative bg-card/50 backdrop-blur-sm border-secondary/30 hover:border-secondary/60 transition-all
-                
               "
             >
               {icon}

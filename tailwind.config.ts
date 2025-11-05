@@ -62,65 +62,21 @@ module.exports = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        "glow-pulse": {
-          "0%, 100%": { opacity: "1", filter: "brightness(1)" },
-          "50%": { opacity: "0.8", filter: "brightness(1.3)" },
-        },
-        "float": {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-20px)" },
-        },
-        "slide-up": {
-          "0%": { opacity: "0", transform: "translateY(40px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        "slide-in-right": {
-          "0%": { opacity: "0", transform: "translateX(40px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        "holographic": {
-          "0%, 100%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-        },
-        "scan-line": {
-          "0%": { transform: "translateY(-100%)" },
-          "100%": { transform: "translateY(100%)" },
-        },
-        "rotate-slow": {
-          "0%": { transform: "rotate(0deg)" },
-          "100%": { transform: "rotate(360deg)" },
-        },
-        "particle-float": {
-          "0%, 100%": { 
-            transform: "translate(0, 0) scale(1)",
-            opacity: "0.6"
-          },
-          "50%": { 
-            transform: "translate(10px, -30px) scale(1.1)",
-            opacity: "1"
-          },
+        "flip-words": {
+          "10%": { transform: "translateY(-112%)" },
+          "25%": { transform: "translateY(-100%)" },
+          "35%": { transform: "translateY(-212%)" },
+          "50%": { transform: "translateY(-200%)" },
+          "60%": { transform: "translateY(-312%)" },
+          "75%": { transform: "translateY(-300%)" },
+          "85%": { transform: "translateY(-412%)" },
+          "100%": { transform: "translateY(-400%)" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
-        "float": "float 6s ease-in-out infinite",
-        "slide-up": "slide-up 0.6s ease-out",
-        "slide-in-right": "slide-in-right 0.6s ease-out",
-        "holographic": "holographic 8s ease infinite",
-        "scan-line": "scan-line 4s linear infinite",
-        "rotate-slow": "rotate-slow 20s linear infinite",
-        "particle-float": "particle-float 4s ease-in-out infinite",
+        "flip-words": "flip-words 8s infinite",
       },
     },
   },

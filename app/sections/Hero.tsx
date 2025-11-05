@@ -1,13 +1,16 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { motion, useMotionValue, useAnimationControls } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
+import AuroraText from "@/components/ui/AuroraView";
+import TextFlip from "@/components/ui/text-flip";
+
 
 /** Skill Data */
 const skills = [
   { name: "Web Developer", top: "20%", left: "30%", delay: 0.2 },
   { name: "Full-Stack", top: "24%", left: "60%", delay: 0.5 },
-  { name: "Backend & Database", top: "63%", left: "15%", delay: 0.8 },
-  { name: "Software Developer", top: "60%", left: "68%", delay: 1.1 },
+  { name: "Backend & Database", top: "60%", left: "13%", delay: 0.8 },
+  { name: "Software Developer", top: "57%", left: "68%", delay: 1.1 },
   { name: "Agentic System", top: "85%", left: "30%", delay: 1.4 },
   { name: "System Design", top: "83%", left: "65%", delay: 1.7 },
 ];
@@ -70,6 +73,7 @@ const FloatingTag: React.FC<{
 
     startAnimation();
   }, [controls, delay]);
+
 
   const handleDragStart = () => {
     setIsDragging(true);
@@ -145,12 +149,46 @@ const FloatingTag: React.FC<{
 };
 
 
+
 /** Main Hero Component */
 const Hero: React.FC = () => {
+
+
+  useEffect(() => {
+    // Dynamic import to ensure anime.js loads properly
+    const initAnimation = async () => {
+      const anime = await import('animejs');
+
+      // Wait a bit for Framer Motion to finish
+      setTimeout(() => {
+        const targets = document.querySelector('.name');
+        if (!targets) return;
+
+        const { chars } = anime.splitText('.name', {
+          chars: { wrap: 'clip' },
+        });
+
+        anime.animate(chars, {
+          y: [
+            { to: ['100%', '0%'] },
+            { to: '-100%', delay: 5000, ease: 'in(3)' }
+          ],
+          duration: 750,
+          ease: 'out(3)',
+          delay: anime.stagger(50),
+          loop: true,
+        });
+      }, 1000); // Wait for Framer Motion animation to complete
+    };
+
+    initAnimation();
+  }, []);
+
+
   return (
     <section className="relative flex flex-col items-center min-h-screen overflow-hidden text-center justify-center">
       {/* Backgrounds */}
-      <div
+      {/* <div
         className="absolute inset-0 z-0
           bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),
                linear-gradient(to_bottom,#80808012_1px,transparent_1px)]
@@ -161,7 +199,11 @@ const Hero: React.FC = () => {
         className="absolute inset-0 z-0
           bg-[radial-gradient(circle_at_center,_rgba(0,255,255,0.12),transparent_40%)]
           pointer-events-none"
-      />
+      /> */}
+
+      {/* Background Grid */}
+        <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
+        <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,_rgba(0,255,255,0.2),transparent_40%)]"></div>
 
       {/* Foreground content */}
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 items-center justify-items-center gap-8 px-4" style={{
@@ -169,18 +211,19 @@ const Hero: React.FC = () => {
       }}>
         {/* Left Text */}
         <motion.h1
-          className="text-xl md:text-6xl font-bold text-cyan-300 drop-shadow-[0_0_12px_rgba(0,255,255,0.45)] text-center "
+          className="font-bold text-cyan-400 drop-shadow-[0_0_12px_rgba(0,255,255,0.45)] text-center"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <span className="text-4xl">Hi, I’m</span> <br />
-          <span className="text-fuchsia-400">Asif U.<br />Ahmed</span>
+          <span className="text-fuchsia-400 text-xl md:text-3xl">Hi, I’m</span> <br />
+          <span className=" text-3xl md:text-[3.5rem] name">ASIF<br />AHMED</span>
         </motion.h1>
+
 
         {/* Center Image */}
         <motion.div
-          className="relative w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden border-2 border-cyan-400 shadow-[0_0_30px_rgba(0,255,255,0.4)]"
+          className="relative w-40 h-40 md:w-52 md:h-52 rounded-full animate-pulse-glow overflow-hidden border-cyan-400 shadow-[0_0_30px_rgba(0,255,255,0.4)]"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.9, ease: 'easeOut' }}
@@ -194,13 +237,15 @@ const Hero: React.FC = () => {
 
         {/* Right Text */}
         <motion.h1
-          className="text-4xl md:text-6xl font-bold text-cyan-300 drop-shadow-[0_0_12px_rgba(0,255,255,0.45)] text-center"
+          className="font-bold text-cyan-400 drop-shadow-[0_0_12px_rgba(0,255,255,0.45)] text-center"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <span className="text-5xl">Creative</span><br />
-          <span className="text-fuchsia-400">Technologist</span>
+          <span className="text-2xl md:text-4xl">Creative</span><br />
+          {/* <span className="text-3xl md:text-6xl text-fuchsia-400">Technologist</span> */}
+          <AuroraText>Technologist</AuroraText>
+
         </motion.h1>
       </div>
       <motion.p
@@ -210,8 +255,8 @@ const Hero: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.45, duration: 0.8, ease: "easeOut" }}
       >
-        Passionate about building intelligent systems that think, learn, and adapt — merging
-        creativity with computation.
+        Passionate about building intelligent systems that <TextFlip /> <br />
+        merging creativity with computation.
       </motion.p>
 
       {/* Floating Skills Layer */}

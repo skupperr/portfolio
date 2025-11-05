@@ -1,11 +1,10 @@
 "use client"
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Tektur, Orbitron } from "next/font/google";
 import "./globals.css";
 import { useState } from "react";
 
 
-import Head from "next/head";
 import Email from "./components/Email";
 import Loader from "./components/Loader";
 import SocialIcons from "./components/SocialIcons";
@@ -17,15 +16,19 @@ import Contact from "./sections/Contact";
 import Projects from "./sections/Projects";
 import Experience from "./sections/Experience";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const tektur = Tektur({
+  subsets: ['latin'],
+  variable: '--font-tektur', // optional, if you want to use it in CSS
+  weight: ['400'], // choose weights you actually need
+  style: ['normal']
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  variable: '--font-orbitron', // optional, if you want to use it in CSS
+  weight: ['400'], 
 });
+
 
 export default function RootLayout({
   children,
@@ -42,9 +45,10 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    // <html lang="en" className={tektur.className}>
+    <html lang="en" className={`${tektur.className} ${orbitron.variable} sans-serif`}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        
       >
         {showContent && (
         <>
@@ -53,6 +57,7 @@ export default function RootLayout({
           <Email />
           <main>
             <Hero />
+            {/* <HeroSection setCurrentScene={() => {}} />  */}
             <About />
             <Experience />
             <Projects />

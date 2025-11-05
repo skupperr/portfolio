@@ -207,7 +207,7 @@ const Hero: React.FC = () => {
 
       {/* Foreground content */}
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 items-center justify-items-center gap-8 px-4" style={{
-        marginBottom: 70, marginTop: 50
+        marginBottom: 70, marginTop: 130
       }}>
         {/* Left Text */}
         <motion.h1
@@ -249,7 +249,7 @@ const Hero: React.FC = () => {
         </motion.h1>
       </div>
       <motion.p
-        className="mt-64 pt-64 md:mt-40 max-w-2xl text-slate-200 text-lg md:text-2xl font-light mb-20"
+        className="max-w-2xl text-slate-200 text-lg md:text-2xl font-light mb-20"
         style={{ textShadow: "0 0 10px rgba(0, 255, 255, 0.38)" }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -102,8 +102,8 @@ main {
 }
 
 * {
-  margin: 0;
-  padding: 0;
+  /* margin: 0; */
+  /* padding: 0; */
   box-sizing: border-box;
 }
 
@@ -174,4 +174,15 @@ html {
 
 .animate-pulse-glow-fuchsia {
   animation: pulse-glow-fuchsia 5s ease-in-out infinite;
+}
+
+
+.timeline-line {
+  background: linear-gradient(to bottom, #00ffff 0%, transparent 100%);
+  animation: flow 4s ease-in-out infinite;
+}
+
+@keyframes flow {
+  0%, 100% { opacity: 0.3; height: 0%; }
+  50% { opacity: 1; height: 100%; }
 }

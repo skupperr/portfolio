@@ -57,7 +57,6 @@ export default function RootLayout({
           <Email />
           <main>
             <Hero />
-            {/* <HeroSection setCurrentScene={() => {}} />  */}
             <About />
             <Experience />
             <Projects />

@@ -1,4 +1,3 @@
-import Button from "@/components/Button";
 import React from "react";
 import { motion } from "framer-motion";
 function Contact() {

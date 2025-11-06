@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@left4code/svg-renderer": "^1.0.4",
     "@react-three/drei": "^10.7.6",
     "@react-three/fiber": "^9.4.0",

@@ -1,6 +1,7 @@
 "use client"
 import type { Metadata } from "next";
 import { Tektur, Orbitron } from "next/font/google";
+import { Toaster } from 'sonner';
 import "./globals.css";
 import { useState } from "react";
 
@@ -15,6 +16,7 @@ import About from "./sections/About";
 import Contact from "./sections/Contact";
 import Projects from "./sections/Projects";
 import Experience from "./sections/Experience";
+import SkillsSection from "./sections/skills";
 
 const tektur = Tektur({
   subsets: ['latin'],
@@ -58,6 +60,7 @@ export default function RootLayout({
           <main>
             <Hero />
             <About />
+            <SkillsSection/>
             <Experience />
             <Projects />
             <Contact />
@@ -66,6 +69,7 @@ export default function RootLayout({
         </>
       )}
       <Loader isLoading={isLoading} setIsLoading={handleLoaderLoaded} />
+      <Toaster richColors position="bottom-right" />
       </body>
     </html>
   );

@@ -81,7 +81,7 @@ const Contact = () => {
             className="space-y-8"
           >
             <div className="space-y-6">
-              <h3 className="text-3xl font-bold text-primary">Get In Touch</h3>
+              <h3 className="text-3xl font-bold text-primary">Let's talk →</h3>
               <p className="text-foreground/80 leading-relaxed">
                 Whether you're looking for a developer to bring your AI vision to life, need a creative
                 technologist for your next project, or simply want to discuss the future of intelligent

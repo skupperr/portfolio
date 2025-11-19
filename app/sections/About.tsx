@@ -343,13 +343,13 @@ const About: React.FC = () => {
                 className="text-base md:text-lg font-light text-slate-200"
                 style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}
               >
-                I am a software architect and creative technologist passionate about the intersection of artificial intelligence and human-computer interaction. My journey in tech is driven by a desire to build not just software, but intelligent experiences that are intuitive, adaptive, and impactful.
+               I’m a computer science student working at the intersection of AI, backend development, and modern web engineering. With a background in full-stack development, AI applications and a deep dive into agentic systems and system design, I specialize in crafting complex applications from the ground up. I thrive on challenges that require both analytical rigor and a creative spark. 
               </p>
               <p
                 className="text-base md:text-lg font-light text-slate-200"
                 style={{ textShadow: '0 0 8px rgba(255, 255, 255, 0.3)' }}
               >
-                With a background in full-stack development and a deep dive into agentic systems and system design, I specialize in crafting complex applications from the ground up. I thrive on challenges that require both analytical rigor and a creative spark.
+                Across every project, I focus on problem-solving from first principles and shipping clean, reliable systems. My interests keep expanding into AI applications, retrieval systems, and intelligent tools that make learning and decision-making easier.
               </p>
             </div>
           </div>

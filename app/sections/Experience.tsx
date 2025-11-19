@@ -243,54 +243,49 @@ import { ScrollTimeline } from "@/src/components/lightswind/scroll-timeline";
 
 const experienceData = [
   {
-    year: "2023 - PRESENT",
-    title: "Lead Agentic Systems Architect",
-    subtitle: "Cyberdyne Synthetics",
+    year: "March 2025 – Oct 2025",
+    title: "Undergraduate Teaching Assistant",
+    subtitle: "United International University",
     description:
-      "Pioneering the development of next-generation autonomous AI agents.\n Responsible for the core cognitive architecture and ensuring ethical alignment of emergent behaviors in complex digital ecosystems. ",
+      "Lab class assistance with faculty members \n Student Counseling \n Review lab classes topic as needed \n Tutorial Class beyond regular sessions",
     logo: "uiu.jpg",
   },
 ];
 
 const educationData = [
   {
-    year: "2015 - 2017",
-    title: "Master's in AI Consciousness",
-    subtitle: "University of Neo-Tokyo",
+    year: "Oct 2025 – Current",
+    title: "Bachelor’s Computer Science and Artificial Intelligence",
+    subtitle: "Technische Hochschule Ingolstadt",
     description:
-      "Focused on the philosophical and technical challenges of creating sentient artificial intelligence. Thesis on emergent consciousness in decentralized neural networks.",
+      "",
+      logo: "thi.png"
   },
   {
-    year: "2011 - 2015",
-    title: "B.S. in Robotic Engineering",
-    subtitle: "MIT Cybernetics Institute",
+    year: "July 2022 – Jan 2025",
+    title: "Bachelor of Science in Computer Science and Engineering",
+    subtitle: "United International University",
     description:
-      "Graduated summa cum laude. Specialized in bipedal locomotion and human-robot interaction. Captain of the award-winning BattleBots team.",
+      "CGPA: 3.95/4.00 \n (69 credits completed out of 137)",
+    logo: "uiu.jpg",
   },
 ];
 
 const awardsData = [
   {
-    year: "2024",
-    title: "Turing Award for Agentic Cognition",
-    subtitle: "Association for Computing Machinery",
+    year: "",
+    title: "UIU Merit Based Scholarship",
+    subtitle: "United International University",
     description:
-      "Recognized for groundbreaking work on the cognitive architecture of autonomous agents at Cyberdyne Synthetics.",
+      "4 times 100% scholarship holder (4th, 5th, 6th, 7th trimester) \n 2 times 50% scholarship holder (2nd & 3rd trimester) \n for exceptional result",
   },
   {
-    year: "2022",
-    title: "Innovator of the Year",
-    subtitle: "OmniCorp",
+    year: "",
+    title: "UIU CSE project show – United International University",
+    subtitle: "United International University",
     description:
-      "Awarded for the development of low-latency neural lace protocols, revolutionizing the augmented reality industry.",
-  },
-  {
-    year: "2018",
-    title: "Cybersecurity Grandmaster",
-    subtitle: "DefCon Zero",
-    description:
-      'Won the global "Capture the Flag" competition by successfully defending a simulated megacorp network against all attack vectors for 72 consecutive hours.',
-  },
+      "1st runner-up out of 86 teams in Advanced Object-Oriented Programming for developing a 2D multiplayer football game with JavaFX",
+  }
 ];
 
 export default function Experience() {

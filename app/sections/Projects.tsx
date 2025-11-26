@@ -33,7 +33,8 @@ const projectImages = [
       { icon: SiTailwindcss, name: "Tailwind" },
       { icon: SiLangchain, name: "LangChain" }
     ],
-    video: "/prove.mp4"
+    video: "/prove.mp4",
+    tag: "prove-my-point",
   },
   {
     id: 2,
@@ -48,7 +49,8 @@ const projectImages = [
       { icon: SiLangchain, name: "LangChain" },
       { icon: DiRedis, name: "Redis" },
     ],
-    video: "/lifelens.mp4"
+    video: "/lifelens.mp4",
+    tag: "lifelens",
   }
 ]
 
@@ -59,6 +61,7 @@ function Projects() {
   const triggerRef = useRef(null)
   const horizontalRef = useRef(null)
   const [isDragging, setIsDragging] = useState(false);
+
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
@@ -221,24 +224,45 @@ function Projects() {
     }
   }, [])
 
+
   return (
     <section
       ref={sectionRef}
-      id="horizontal-section"
-      className="relative py-20 overflow-hidden"
+      id="project"
+      className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"
     >
+      {/* Elegant Background */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-400/5 rounded-full blur-[200px]" />
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#1e293b08_1px,transparent_1px),linear-gradient(to_bottom,#1e293b08_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_rgba(251,191,36,0.03),transparent_50%)]"></div>
 
-
-
-      {/* Background Effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] animate-pulse" />
-      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
+      {/* Premium Noise Texture */}
+      <div
+        className="absolute inset-0 z-0 opacity-[0.015] mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      ></div>
 
       <div className="container mx-auto px-4 mb-16 relative z-10">
-        <h2 ref={titleRef} className="text-4xl md:text-5xl lg:text-6xl font-bold text-cyan-400 text-center mb-4 opacity-0">
+        <h2
+          ref={titleRef}
+          className="text-4xl md:text-5xl lg:text-6xl font-light tracking-wide text-transparent bg-clip-text bg-gradient-to-br from-amber-200 via-amber-100 to-slate-200 text-center mb-6 opacity-0"
+          style={{
+            fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+            textShadow: '0 2px 30px rgba(251, 191, 36, 0.2)',
+            letterSpacing: '0.08em'
+          }}
+        >
           Featured Projects
         </h2>
-        <div ref={titleLineRef} className="w-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto opacity-0"></div>
+
+        {/* Decorative Element */}
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="w-16 h-px bg-gradient-to-r from-transparent to-amber-400/50"></div>
+          <div ref={titleLineRef} className="w-0 h-px bg-gradient-to-r from-amber-400/80 via-amber-300/60 to-amber-400/80 opacity-0"></div>
+          <div className="w-16 h-px bg-gradient-to-l from-transparent to-amber-400/50"></div>
+        </div>
       </div>
 
       <div ref={triggerRef} className="overflow-hidden" style={{ opacity: 0 }}>
@@ -246,11 +270,11 @@ function Projects() {
           {projectImages.map((project) => {
             return (
               <div key={project.id} className="panel flex-shrink-0 w-screen h-screen relative flex items-center justify-center px-8">
-                <div className="project-card max-w-5xl w-full bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-sm rounded-3xl overflow-hidden border border-cyan-500/30 shadow-2xl hover:border-cyan-400/60 transition-all duration-500 hover:shadow-cyan-500/20">
+                <div className="project-card max-w-5xl w-full bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90 backdrop-blur-xl rounded-3xl overflow-hidden border border-amber-400/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_80px_rgba(251,191,36,0.08),inset_0_1px_0_rgba(255,255,255,0.05)] hover:border-amber-400/40 hover:shadow-[0_12px_48px_rgba(251,191,36,0.15)] transition-all duration-500">
                   <div className="flex flex-col md:flex-row h-full">
                     {/* Left side - Image */}
-                    <div className="project-image md:w-1/2 relative overflow-hidden pointer-events-none">
-                      <div className="absolute inset-0  z-10"></div>
+                    <div className="project-image md:w-1/2 relative overflow-hidden pointer-events-none bg-slate-950/50">
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-400/5 to-transparent z-10"></div>
 
                       <div
                         className={`pointer-events-auto relative w-full h-full ${isDragging ? "cursor-grabbing" : "cursor-grab"
@@ -277,36 +301,52 @@ function Projects() {
                           />
                         </Canvas>
                       </div>
-
                     </div>
-
 
                     {/* Right side - Content */}
                     <div className="project-content md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
                       <div className="flex items-center gap-3 mb-4">
-                        <h3 className="text-2xl md:text-3xl font-bold text-cyan-400 hover:text-pink-400 transition-colors duration-300 cursor-pointer">
+                        <h3
+                          className="text-2xl md:text-3xl font-light text-transparent bg-clip-text bg-gradient-to-br from-amber-200 to-amber-100 hover:from-amber-100 hover:to-slate-200 transition-all duration-300 cursor-pointer"
+                          style={{
+                            fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+                            letterSpacing: '0.03em'
+                          }}
+                        >
                           {project.title}
                         </h3>
-                        <SlShareAlt className="text-cyan-400 hover:text-pink-400 transition-colors duration-300 cursor-pointer text-xl" />
+                        <SlShareAlt className="text-amber-400 hover:text-amber-300 transition-colors duration-300 cursor-pointer text-xl hover:scale-110" />
                       </div>
 
-                      <p className="text-slate-300 text-base md:text-lg leading-relaxed mb-8">
+                      <p
+                        className="text-slate-300 text-base md:text-lg leading-relaxed mb-8 font-light"
+                        style={{
+                          fontFamily: "'Inter', 'SF Pro Display', sans-serif",
+                          textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)'
+                        }}
+                      >
                         {project.description}
                       </p>
 
                       {/* Tech Stack */}
                       <div className="space-y-4">
-                        <h4 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">
+                        <h4
+                          className="text-sm font-light text-slate-400 uppercase tracking-wider"
+                          style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                        >
                           Tech Stack
                         </h4>
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-wrap gap-3">
                           {project.techStack.map((tech, index) => (
                             <div
                               key={index}
-                              className="tech-icon group relative flex items-center gap-2 px-4 py-2 bg-slate-800/50 rounded-lg border border-cyan-500/20 hover:border-cyan-400/60 hover:bg-slate-700/50 transition-all duration-300 cursor-pointer"
+                              className="tech-icon group relative flex items-center gap-2 px-4 py-2 bg-gradient-to-br from-slate-800/60 to-slate-900/40 rounded-lg border border-amber-400/20 hover:border-amber-400/40 hover:bg-slate-800/80 backdrop-blur-sm shadow-[0_2px_8px_rgba(0,0,0,0.2)] hover:shadow-[0_4px_16px_rgba(251,191,36,0.15)] transition-all duration-300 cursor-pointer"
                             >
-                              <tech.icon className="text-2xl text-cyan-400 group-hover:text-pink-400 transition-colors duration-300" />
-                              <span className="text-sm text-slate-300 font-medium">
+                              <tech.icon className="text-2xl text-amber-400 group-hover:text-amber-300 transition-colors duration-300 group-hover:scale-110" />
+                              <span
+                                className="text-sm text-slate-300 font-light"
+                                style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                              >
                                 {tech.name}
                               </span>
                             </div>
@@ -315,9 +355,22 @@ function Projects() {
                       </div>
 
                       {/* View Project Button */}
-                      <button className="mt-8 px-6 py-3 bg-gradient-to-r from-cyan-500 to-pink-500 text-white font-semibold rounded-lg hover:from-cyan-400 hover:to-pink-400 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50 hover:-translate-y-1">
+                      <Link
+                        href={`/projects/${project.tag}`}
+                        className="
+                          mt-8 inline-block px-6 py-3 
+                          bg-gradient-to-br from-amber-400/10 to-amber-500/5
+                          border border-amber-400/30 
+                          text-amber-100 font-light tracking-wide rounded-lg
+                          hover:bg-amber-400/20 hover:border-amber-400/50
+                          hover:shadow-[0_0_20px_rgba(251,191,36,0.3)]
+                          transition-all duration-300 hover:-translate-y-1
+                          font-inter text-center
+                        "
+                      >
                         View Project
-                      </button>
+                      </Link>
+
                     </div>
                   </div>
                 </div>
@@ -327,15 +380,14 @@ function Projects() {
         </div>
       </div>
 
-      <div className="flex justify-center items-center align-middle">
-
-
-        <Link href="/all-project">
-          <MagicButton
-            title="All Project work"
-            icon={<FaLocationArrow />}
-            position="right"
-          />
+      <div className="container mx-auto px-4 relative z-20 flex justify-center items-center mt-16">
+        <Link
+          href="/projects"
+          className="flex items-center gap-3 px-8 py-4 bg-gradient-to-br from-amber-400/10 to-amber-500/5 border border-amber-400/30 text-amber-100 font-light tracking-wide rounded-full hover:bg-amber-400/20 hover:border-amber-400/50 hover:shadow-[0_0_30px_rgba(251,191,36,0.3)] transition-all duration-300 group cursor-pointer"
+          style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+        >
+          <span>View All Projects</span>
+          <FaLocationArrow className="group-hover:translate-x-1 transition-transform duration-300" />
         </Link>
       </div>
     </section>

@@ -1,6 +1,9 @@
+'use client';
+
 import React from 'react';
 import { projectsData } from './projectsData';
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
+import Link from 'next/link';
 
 const GithubIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -14,9 +17,9 @@ const LiveDemoIcon = () => (
     </svg>
 );
 
-
 interface Project {
     id: number;
+    tag: string;
     title: string;
     description: string;
     image: string;
@@ -32,90 +35,39 @@ interface ProjectGridCardProps {
 
 const ProjectGridCard: React.FC<ProjectGridCardProps> = ({ project }) => {
     return (
-        <div className="border-2 border-cyan-500/30 bg-[#000421]/50 p-6 rounded-lg backdrop-blur-sm flex flex-col h-full group transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_25px_rgba(0,255,255,0.4)] hover:-translate-y-2">
-            <div className="w-full h-48 mb-4 overflow-hidden rounded-md">
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
-            </div>
-            <div className="flex flex-col flex-grow text-left">
-                <h3 className="text-2xl font-bold text-cyan-300 mb-2">{project.title}</h3>
-                <p className="text-slate-400 text-sm font-light mb-4 flex-grow">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                    {project.techStack.map(tech => (
-                        <span key={tech} className="px-3 py-1 rounded-full border border-fuchsia-500/50 bg-[#000421]/60 text-fuchsia-300 text-xs font-medium">
-                            {tech}
-                        </span>
-                    ))}
+        <Link href={`/projects/${project.tag}`}>
+            <div className="border border-amber-400/20 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90 p-6 rounded-2xl backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)] flex flex-col h-full group transition-all duration-500 hover:border-amber-400/40 hover:shadow-[0_12px_48px_rgba(251,191,36,0.15)] hover:-translate-y-2 cursor-pointer">
+                <div className="w-full h-48 mb-4 overflow-hidden rounded-xl border border-amber-400/10">
+                    <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 </div>
-                <div className="flex flex-wrap gap-4 mt-5">
-                    {/* GitHub Tooltip */}
-                    <TooltipProvider delayDuration={50}>
-                        <Tooltip>
-                            <TooltipTrigger asChild>
-                                <a
-                                    href={project.githubUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-sm transition-all duration-300 text-slate-300 hover:text-white"
-                                >
-                                    <GithubIcon />
-                                </a>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                                <p>GitHub Repository</p>
-                            </TooltipContent>
-                        </Tooltip>
-                    </TooltipProvider>
-
-                    {/* Live Demo Tooltip */}
-                    {project.liveDemoUrl && (
-                        <TooltipProvider delayDuration={50}>
-                            <Tooltip>
-                                <TooltipTrigger asChild>
-                                    <a
-                                        href={project.liveDemoUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-sm transition-all duration-300 text-fuchsia-300 hover:text-fuchsia-200"
-                                    >
-                                        <LiveDemoIcon />
-                                    </a>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    <p>Live Demo</p>
-                                </TooltipContent>
-                            </Tooltip>
-                        </TooltipProvider>
-                    )}
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const FeaturedProjectCard: React.FC<{ project: Project }> = ({ project }) => {
-    return (
-        <div className="border-2 border-fuchsia-500/50 bg-[#000421]/60 p-6 rounded-lg backdrop-blur-sm group transition-all duration-300 hover:border-fuchsia-400 hover:shadow-[0_0_30px_rgba(217,70,239,0.5)] hover:-translate-y-2 grid md:grid-cols-5 gap-8 items-center">
-            {/* Image */}
-            <div className="md:col-span-2 w-full h-64 overflow-hidden rounded-md">
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
-            </div>
-            {/* Details */}
-            <div className="md:col-span-3 flex flex-col h-full text-left">
-                <h3 className="text-3xl font-bold text-fuchsia-300 mb-3">{project.title}</h3>
-                <p className="text-slate-300 font-light mb-6 flex-grow">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mt-auto justify-between">
-                    <div>
+                <div className="flex flex-col flex-grow text-left">
+                    <h3 
+                        className="text-xl md:text-2xl font-light text-transparent bg-clip-text bg-gradient-to-br from-amber-200 to-amber-100 mb-2"
+                        style={{ 
+                            fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+                            letterSpacing: '0.02em'
+                        }}
+                    >
+                        {project.title}
+                    </h3>
+                    <p 
+                        className="text-slate-400 text-sm font-light mb-4 flex-grow leading-relaxed"
+                        style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                    >
+                        {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-4">
                         {project.techStack.map(tech => (
-                            <span key={tech} className="px-3 py-1 rounded-full border border-cyan-500/50 bg-[#000421]/60 text-cyan-300 text-xs font-medium mr-2">
+                            <span 
+                                key={tech} 
+                                className="px-3 py-1 rounded-full border border-amber-400/20 bg-slate-950/50 text-amber-300 text-xs font-light tracking-wide"
+                                style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                            >
                                 {tech}
                             </span>
                         ))}
                     </div>
-
-
-
-                    <div className="flex flex-wrap gap-4">
-
+                    <div className="flex gap-4 mt-2 pt-4 border-t border-amber-400/10">
                         <TooltipProvider delayDuration={50}>
                             <Tooltip>
                                 <TooltipTrigger asChild>
@@ -123,12 +75,13 @@ const FeaturedProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                                         href={project.githubUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-sm transition-all duration-300 text-slate-300 hover:text-white"
+                                        onClick={(e) => e.stopPropagation()}
+                                        className="text-amber-400 hover:text-amber-300 transition-all duration-300 hover:scale-110"
                                     >
                                         <GithubIcon />
                                     </a>
                                 </TooltipTrigger>
-                                <TooltipContent>
+                                <TooltipContent className="bg-slate-900 border-amber-400/30 text-white">
                                     <p>GitHub Repository</p>
                                 </TooltipContent>
                             </Tooltip>
@@ -142,50 +95,162 @@ const FeaturedProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                                             href={project.liveDemoUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-sm transition-all duration-300 text-fuchsia-300 hover:text-fuchsia-200"
+                                            onClick={(e) => e.stopPropagation()}
+                                            className="text-amber-400 hover:text-amber-300 transition-all duration-300 hover:scale-110"
                                         >
                                             <LiveDemoIcon />
                                         </a>
                                     </TooltipTrigger>
-                                    <TooltipContent>
+                                    <TooltipContent className="bg-slate-900 border-amber-400/30 text-white">
                                         <p>Live Demo</p>
                                     </TooltipContent>
                                 </Tooltip>
                             </TooltipProvider>
                         )}
-
                     </div>
-
                 </div>
-
             </div>
-        </div>
+        </Link>
     );
 };
 
+const FeaturedProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+    return (
+        <Link href={`/projects/${project.tag}`}>
+            <div className="border border-amber-400/30 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95 p-8 rounded-3xl backdrop-blur-xl shadow-[0_12px_48px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.05)] group transition-all duration-500 hover:border-amber-400/50 hover:shadow-[0_16px_64px_rgba(251,191,36,0.2)] hover:-translate-y-2 grid md:grid-cols-5 gap-8 items-center cursor-pointer">
+                {/* Image */}
+                <div className="md:col-span-2 w-full h-64 overflow-hidden rounded-2xl border border-amber-400/20">
+                    <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                </div>
+                {/* Details */}
+                <div className="md:col-span-3 flex flex-col h-full text-left">
+                    <h3 
+                        className="text-2xl md:text-3xl font-light text-transparent bg-clip-text bg-gradient-to-br from-amber-200 via-amber-100 to-amber-50 mb-3"
+                        style={{ 
+                            fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+                            letterSpacing: '0.02em'
+                        }}
+                    >
+                        {project.title}
+                    </h3>
+                    <p 
+                        className="text-slate-300 font-light mb-6 flex-grow leading-relaxed"
+                        style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                    >
+                        {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-4 mt-auto items-center justify-between">
+                        <div className="flex flex-wrap gap-2">
+                            {project.techStack.map(tech => (
+                                <span 
+                                    key={tech} 
+                                    className="px-3 py-1 rounded-full border border-amber-400/30 bg-slate-950/50 text-amber-300 text-xs font-light tracking-wide"
+                                    style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                                >
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+
+                        <div className="flex gap-4">
+                            <TooltipProvider delayDuration={50}>
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <a
+                                            href={project.githubUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={(e) => e.stopPropagation()}
+                                            className="text-amber-400 hover:text-amber-300 transition-all duration-300 hover:scale-110"
+                                        >
+                                            <GithubIcon />
+                                        </a>
+                                    </TooltipTrigger>
+                                    <TooltipContent className="bg-slate-900 border-amber-400/30 text-white">
+                                        <p>GitHub Repository</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
+
+                            {project.liveDemoUrl && (
+                                <TooltipProvider delayDuration={50}>
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <a
+                                                href={project.liveDemoUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                onClick={(e) => e.stopPropagation()}
+                                                className="text-amber-400 hover:text-amber-300 transition-all duration-300 hover:scale-110"
+                                            >
+                                                <LiveDemoIcon />
+                                            </a>
+                                        </TooltipTrigger>
+                                        <TooltipContent className="bg-slate-900 border-amber-400/30 text-white">
+                                            <p>Live Demo</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </TooltipProvider>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Link>
+    );
+};
 
 const AllProjectsPage: React.FC = () => {
     const featuredProjects = projectsData.filter(p => p.featured);
     const regularProjects = projectsData.filter(p => !p.featured);
 
     return (
-        <div className="min-h-screen bg-[#00001a] text-white">
-            <section className="relative py-20 md:py-24 px-4">
-                <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
-                <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,_rgba(0,255,255,0.08),transparent_40%)]"></div>
+        <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
+            <section className="relative py-24 md:py-32 px-4">
+                {/* Elegant Background */}
+                <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#1e293b08_1px,transparent_1px),linear-gradient(to_bottom,#1e293b08_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+                <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_rgba(251,191,36,0.03),transparent_50%)]"></div>
+                
+                {/* Premium Noise Texture */}
+                <div 
+                    className="absolute inset-0 z-0 opacity-[0.015] mix-blend-overlay"
+                    style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                    }}
+                ></div>
 
                 <div className="container mx-auto max-w-7xl relative z-10">
-                    <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-4">
-                        <h2 className="text-4xl md:text-5xl font-bold text-cyan-300 text-center" style={{ textShadow: '0 0 12px rgba(0, 255, 255, 0.5)' }}>
+                    {/* Page Header */}
+                    <div className="text-center mb-20">
+                        <h2 
+                            className="text-4xl md:text-5xl font-light tracking-wide text-transparent bg-clip-text bg-gradient-to-br from-amber-200 via-amber-100 to-slate-200 mb-6"
+                            style={{ 
+                                fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+                                textShadow: '0 2px 30px rgba(251, 191, 36, 0.2)',
+                                letterSpacing: '0.08em'
+                            }}
+                        >
                             All Projects
                         </h2>
-                        <div className="hidden md:block w-48"></div> {/* Spacer to center the title on larger screens */}
+                        
+                        {/* Decorative Element */}
+                        <div className="flex items-center justify-center gap-3">
+                            <div className="w-12 h-px bg-gradient-to-r from-transparent to-amber-400/50"></div>
+                            <div className="w-2 h-2 rounded-full bg-amber-400/50"></div>
+                            <div className="w-12 h-px bg-gradient-to-l from-transparent to-amber-400/50"></div>
+                        </div>
                     </div>
 
                     {/* Featured Projects Section */}
                     {featuredProjects.length > 0 && (
-                        <div className="mb-20">
-                            <h3 className="text-3xl md:text-4xl font-bold text-fuchsia-400 mb-8 text-center" style={{ textShadow: '0 0 12px rgba(217, 70, 239, 0.5)' }}>
+                        <div className="mb-24">
+                            <h3 
+                                className="text-3xl md:text-4xl font-light tracking-wide text-transparent bg-clip-text bg-gradient-to-br from-amber-200 to-amber-100 mb-12 text-center"
+                                style={{ 
+                                    fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+                                    letterSpacing: '0.05em'
+                                }}
+                            >
                                 Featured Projects
                             </h3>
                             <div className="grid grid-cols-1 gap-12">
@@ -199,7 +264,13 @@ const AllProjectsPage: React.FC = () => {
                     {/* Regular Projects Section */}
                     {regularProjects.length > 0 && (
                         <div>
-                            <h3 className="text-3xl md:text-4xl font-bold text-cyan-300 mb-8 text-center" style={{ textShadow: '0 0 12px rgba(0, 255, 255, 0.5)' }}>
+                            <h3 
+                                className="text-3xl md:text-4xl font-light tracking-wide text-transparent bg-clip-text bg-gradient-to-br from-amber-200 to-amber-100 mb-12 text-center"
+                                style={{ 
+                                    fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+                                    letterSpacing: '0.05em'
+                                }}
+                            >
                                 More Projects
                             </h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -15,9 +15,8 @@ const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
 
 const Contact = () => {
-
-  const sectionRef = useRef(null);     // for useInView animation
-  const formRef = useRef<HTMLFormElement>(null);  // for EmailJS form element
+  const sectionRef = useRef(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const isInView = useInView(sectionRef, { once: false, margin: "-100px" });
 
   const [formData, setFormData] = useState({
@@ -49,42 +48,76 @@ const Contact = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen py-32 px-6 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] animate-pulse" />
-      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
-
+    <section ref={sectionRef} id="contact" className="relative min-h-screen py-24 md:py-36 px-6 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      {/* Elegant Background */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-400/5 rounded-full blur-[200px]" />
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#1e293b08_1px,transparent_1px),linear-gradient(to_bottom,#1e293b08_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_rgba(251,191,36,0.03),transparent_50%)]"></div>
+      
+      {/* Premium Noise Texture */}
+      <div 
+        className="absolute inset-0 z-0 opacity-[0.015] mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      ></div>
 
       <div className="max-w-5xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 60, scale: 0.95 }}
-          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 60, scale: 0.95 }}
-          transition={{ duration: 0.8, ease: [0.17, 0.67, 0.83, 0.67] }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.95 }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center mb-20"
         >
           <h2
-            className={"text-4xl md:text-5xl font-bold text-primary text-glow-cyan mb-4 transition-all duration-1000 ease-out opacity-100 translate-y-0"}
-            style={{ textShadow: '0 0 10px rgba(0, 234, 255, 1)' }}
+            className="text-4xl md:text-5xl font-light tracking-wide text-transparent bg-clip-text bg-gradient-to-br from-amber-200 via-amber-100 to-slate-200 mb-6"
+            style={{ 
+              fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+              textShadow: '0 2px 30px rgba(251, 191, 36, 0.2)',
+              letterSpacing: '0.08em'
+            }}
           >
-            GET IN TOUCH
+            Get In Touch
           </h2>
-          <p className="text-md text-muted-foreground max-w-2xl mx-auto">
+          
+          {/* Decorative Element */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-amber-400/50"></div>
+            <div className="w-2 h-2 rounded-full bg-amber-400/50"></div>
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-amber-400/50"></div>
+          </div>
+
+          <p 
+            className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed"
+            style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+          >
             Have a project in mind, a question about my work, or just want to connect? Send a message through the network. I'm always open to discussing new ideas and collaborations.
           </p>
         </motion.div>
 
-        <div ref={sectionRef} className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12">
 
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1.0, delay: 0.6 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="space-y-8"
           >
             <div className="space-y-6">
-              <h3 className="text-3xl font-bold text-primary">Let's talk →</h3>
-              <p className="text-foreground/80 leading-relaxed">
+              <h3 
+                className="text-3xl md:text-4xl font-light text-transparent bg-clip-text bg-gradient-to-br from-amber-200 to-amber-100"
+                style={{ 
+                  fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+                  letterSpacing: '0.02em'
+                }}
+              >
+                Let's talk →
+              </h3>
+              <p 
+                className="text-slate-300 leading-relaxed font-light"
+                style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+              >
                 Whether you're looking for a developer to bring your AI vision to life, need a creative
                 technologist for your next project, or simply want to discuss the future of intelligent
                 systems — I'm just a message away.
@@ -94,14 +127,24 @@ const Contact = () => {
             <div className="space-y-4">
               <a
                 href="mailto:mylifeasasif@gmail.com"
-                className="group flex items-center gap-4 p-4 bg-card/50 backdrop-blur-sm border border-primary/30 rounded-lg hover-glow-cyan hover:border-primary/60 transition-all"
+                className="group flex items-center gap-4 p-4 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90 backdrop-blur-xl border border-amber-400/20 rounded-xl hover:border-amber-400/40 hover:shadow-[0_8px_32px_rgba(251,191,36,0.15)] transition-all duration-300"
               >
-                <div className="p-3 bg-primary/10 rounded-full border border-primary">
-                  <Mail className="w-6 h-6 text-primary" />
+                <div className="p-3 bg-amber-400/10 rounded-full border border-amber-400/30 group-hover:bg-amber-400/20 transition-all duration-300">
+                  <Mail className="w-6 h-6 text-amber-400" />
                 </div>
                 <div>
-                  <div className="font-semibold text-foreground">Email</div>
-                  <div className="text-sm text-muted-foreground">mylifeasasif@gmail.com</div>
+                  <div 
+                    className="font-light text-amber-100 mb-1"
+                    style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                  >
+                    Email
+                  </div>
+                  <div 
+                    className="text-sm text-slate-400 font-light"
+                    style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                  >
+                    mylifeasasif@gmail.com
+                  </div>
                 </div>
               </a>
 
@@ -109,14 +152,24 @@ const Contact = () => {
                 href="https://github.com/skupperr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-4 bg-card/50 backdrop-blur-sm border border-secondary/30 rounded-lg hover:border-secondary/60 hover:shadow-[0_0_30px_hsl(330,100%,50%/0.3)] transition-all"
+                className="group flex items-center gap-4 p-4 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90 backdrop-blur-xl border border-amber-400/20 rounded-xl hover:border-amber-400/40 hover:shadow-[0_8px_32px_rgba(251,191,36,0.15)] transition-all duration-300"
               >
-                <div className="p-3 bg-secondary/10 rounded-full border border-secondary">
-                  <Github className="w-6 h-6 text-secondary" />
+                <div className="p-3 bg-amber-400/10 rounded-full border border-amber-400/30 group-hover:bg-amber-400/20 transition-all duration-300">
+                  <Github className="w-6 h-6 text-amber-400" />
                 </div>
                 <div>
-                  <div className="font-semibold text-foreground">GitHub</div>
-                  <div className="text-sm text-muted-foreground">@skupperr</div>
+                  <div 
+                    className="font-light text-amber-100 mb-1"
+                    style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                  >
+                    GitHub
+                  </div>
+                  <div 
+                    className="text-sm text-slate-400 font-light"
+                    style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                  >
+                    @skupperr
+                  </div>
                 </div>
               </a>
 
@@ -124,106 +177,129 @@ const Contact = () => {
                 href="https://www.linkedin.com/in/asifuahmed/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-4 bg-card/50 backdrop-blur-sm border border-accent/30 rounded-lg hover:border-accent/60 hover:shadow-[0_0_30px_hsl(270,80%,60%/0.3)] transition-all"
+                className="group flex items-center gap-4 p-4 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90 backdrop-blur-xl border border-amber-400/20 rounded-xl hover:border-amber-400/40 hover:shadow-[0_8px_32px_rgba(251,191,36,0.15)] transition-all duration-300"
               >
-                <div className="p-3 bg-accent/10 rounded-full border border-accent">
-                  <Linkedin className="w-6 h-6 text-accent" />
+                <div className="p-3 bg-amber-400/10 rounded-full border border-amber-400/30 group-hover:bg-amber-400/20 transition-all duration-300">
+                  <Linkedin className="w-6 h-6 text-amber-400" />
                 </div>
                 <div>
-                  <div className="font-semibold text-foreground">LinkedIn</div>
-                  <div className="text-sm text-muted-foreground">Asif U. Ahmed</div>
+                  <div 
+                    className="font-light text-amber-100 mb-1"
+                    style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                  >
+                    LinkedIn
+                  </div>
+                  <div 
+                    className="text-sm text-slate-400 font-light"
+                    style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                  >
+                    Asif U. Ahmed
+                  </div>
                 </div>
               </a>
             </div>
           </motion.div>
 
-          {/* Terminal-Style Contact Form */}
+          {/* Elegant Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1.0, delay: 0.6 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             className="relative"
           >
-            <div className="relative p-8 bg-card/50 backdrop-blur-sm border-2 border-primary/30 rounded-2xl hover-glow-cyan">
-              {/* Terminal Header */}
-              <div className="flex items-center gap-2 mb-6 pb-4 border-b border-primary/30">
-                <div className="w-3 h-3 rounded-full bg-destructive" />
-                <div className="w-3 h-3 rounded-full bg-accent" />
-                <div className="w-3 h-3 rounded-full bg-primary" />
-                <span className="ml-4 text-sm text-primary font-mono">contact_asif.sh</span>
+            <div className="relative p-8 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90 backdrop-blur-xl border border-amber-400/20 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)] hover:border-amber-400/30 transition-all duration-500">
+              {/* Elegant Header */}
+              <div className="flex items-center gap-3 mb-8 pb-6 border-b border-amber-400/20">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-amber-400/40" />
+                  <div className="w-3 h-3 rounded-full bg-amber-400/60" />
+                  <div className="w-3 h-3 rounded-full bg-amber-400" />
+                </div>
+                <span 
+                  className="ml-4 text-sm text-amber-400 font-light tracking-wide"
+                  style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                >
+                  contact_form
+                </span>
               </div>
 
-              {/* ✅ Correctly referenced form */}
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-sm font-mono text-primary mb-2">$ enter_name:</label>
+                  <label 
+                    className="block text-sm font-light text-amber-400 mb-2 tracking-wide"
+                    style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                  >
+                    Name
+                  </label>
                   <input
                     type="text"
                     name="from_name"
                     value={formData.from_name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-background/50 border border-primary/30 rounded-lg text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                    className="w-full px-4 py-3 bg-slate-950/50 border border-amber-400/20 rounded-lg text-slate-200 placeholder:text-slate-500 focus:border-amber-400/40 focus:outline-none focus:ring-2 focus:ring-amber-400/10 transition-all font-light"
                     placeholder="Your Name"
+                    style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-mono text-primary mb-2">$ enter_email:</label>
+                  <label 
+                    className="block text-sm font-light text-amber-400 mb-2 tracking-wide"
+                    style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                  >
+                    Email
+                  </label>
                   <input
                     type="email"
                     name="from_email"
                     value={formData.from_email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-background/50 border border-primary/30 rounded-lg text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                    className="w-full px-4 py-3 bg-slate-950/50 border border-amber-400/20 rounded-lg text-slate-200 placeholder:text-slate-500 focus:border-amber-400/40 focus:outline-none focus:ring-2 focus:ring-amber-400/10 transition-all font-light"
                     placeholder="your.email@example.com"
+                    style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-mono text-primary mb-2">$ enter_message:</label>
+                  <label 
+                    className="block text-sm font-light text-amber-400 mb-2 tracking-wide"
+                    style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                  >
+                    Message
+                  </label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="w-full px-4 py-3 bg-background/50 border border-primary/30 rounded-lg text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none"
+                    className="w-full px-4 py-3 bg-slate-950/50 border border-amber-400/20 rounded-lg text-slate-200 placeholder:text-slate-500 focus:border-amber-400/40 focus:outline-none focus:ring-2 focus:ring-amber-400/10 transition-all resize-none font-light"
                     placeholder="Your message..."
+                    style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
                   />
                 </div>
                 <input type="hidden" name="time" value={new Date().toLocaleString()} />
 
                 <button
                   type="submit"
-                  className="group relative w-full px-6 py-4 bg-primary/10 border-2 border-primary rounded-lg font-semibold text-primary hover-glow-cyan overflow-hidden transition-all cursor-pointer"
+                  className="group relative w-full px-6 py-4 bg-gradient-to-br from-amber-400/10 to-amber-500/5 border border-amber-400/30 rounded-lg font-light text-amber-100 hover:bg-amber-400/20 hover:border-amber-400/50 hover:shadow-[0_0_30px_rgba(251,191,36,0.3)] overflow-hidden transition-all duration-300 cursor-pointer tracking-wide"
+                  style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    <Send className="w-5 h-5" /> Send Message
+                    <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" /> 
+                    Send Message
                   </span>
-                  <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-20 transition-opacity" />
                 </button>
               </form>
             </div>
-
           </motion.div>
         </div>
-
-        {/* Footer */}
-        {/* <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-20 text-center"
-        >
-          <p className="text-muted-foreground">
-            © 2025 Asif U. Ahmed. Built with React, Three.js, and caffeine.
-          </p>
-        </motion.div> */}
       </div>
     </section>
   );
 };
+
 
 export default Contact;

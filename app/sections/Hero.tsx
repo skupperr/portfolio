@@ -39,9 +39,9 @@ const FloatingTag: React.FC<{
         x: [0, 5, 0],
         y: [0, -5, 0],
         filter: [
-          "drop-shadow(0 0 5px rgba(255, 0, 255, 0.6))",
-          "drop-shadow(0 0 20px rgba(255, 0, 255, 0.8))",
-          "drop-shadow(0 0 8px rgba(255, 0, 255, 0.6))",
+          // "drop-shadow(0 0 5px rgba(255, 0, 255, 0.6))",
+          // "drop-shadow(0 0 20px rgba(255, 0, 255, 0.8))",
+          // "drop-shadow(0 0 8px rgba(255, 0, 255, 0.6))",
         ],
         transition: {
           duration: 1.5,
@@ -115,33 +115,35 @@ const FloatingTag: React.FC<{
   return (
     <motion.div
       className="
-        absolute px-5 py-2 rounded-full
-        border border-fuchsia-500/70 bg-[#00001a]/80 text-fuchsia-300
-        shadow-[0_0_20px_rgba(217,70,239,0.45)]
-        text-sm md:text-base font-medium backdrop-blur-sm
-        select-none cursor-grab whitespace-nowrap
-      "
+            absolute px-6 py-2.5 rounded-full
+            border border-amber-400/20 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90
+            text-amber-50 backdrop-blur-xl
+            shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]
+            text-sm md:text-base font-light tracking-wide
+            select-none cursor-grab whitespace-nowrap
+            hover:border-amber-400/40 hover:shadow-[0_8px_40px_rgba(251,191,36,0.15)]
+          "
       style={{
         top,
         left,
         transform: "translate(-50%, -50%)",
-        paddingTop: 5,
-        paddingBottom: 5,
-        paddingLeft: 20,
-        paddingRight: 20
+        fontFamily: "'Inter', 'SF Pro Display', -apple-system, system-ui, sans-serif",
+        letterSpacing: "0.02em",
       }}
       drag
       dragMomentum={false}
-      dragElastic={0.18}
+      dragElastic={0.3}
+      dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
       whileDrag={{
-        scale: 1.05,
+        scale: 1.03,
         cursor: "grabbing",
-        filter: "drop-shadow(0 0 25px rgba(255, 0, 255, 0.9))",
+        boxShadow: "0 12px 48px rgba(251, 191, 36, 0.25), inset 0 1px 0 rgba(255,255,255,0.1)",
+        borderColor: "rgba(251, 191, 36, 0.5)",
       }}
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
       animate={controls}
-      initial={{ opacity: 0, scale: 0.4, rotate: -15 }}
+      initial={{ opacity: 0, scale: 0.9, y: 10 }}
     >
       {name}
     </motion.div>
@@ -186,50 +188,64 @@ const Hero: React.FC = () => {
 
 
   return (
-    <section className="relative flex flex-col items-center min-h-screen overflow-hidden text-center justify-center">
-      {/* Backgrounds */}
-      {/* <div
-        className="absolute inset-0 z-0
-          bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),
-               linear-gradient(to_bottom,#80808012_1px,transparent_1px)]
-          bg-[size:3rem_3rem]
-          pointer-events-none"
-      />
-      <div
-        className="absolute inset-0 z-0
-          bg-[radial-gradient(circle_at_center,_rgba(0,255,255,0.12),transparent_40%)]
-          pointer-events-none"
-      /> */}
+    <section id="hero" className="relative flex flex-col items-center min-h-screen overflow-hidden text-center justify-center bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
 
-      {/* Background Grid */}
-        <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
-        <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,_rgba(0,255,255,0.2),transparent_40%)]"></div>
+      {/* Elegant Grid Background with Luxury Gradient */}
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#1e293b08_1px,transparent_1px),linear-gradient(to_bottom,#1e293b08_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_rgba(251,191,36,0.03),transparent_50%)]"></div>
+
+      {/* Premium Noise Texture Overlay */}
+      <div
+        className="absolute inset-0 z-0 opacity-[0.015] mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      ></div>
 
       {/* Foreground content */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 items-center justify-items-center gap-8 px-4" style={{
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 items-center justify-items-center gap-12 px-4" style={{
         marginBottom: 70, marginTop: 130
       }}>
         {/* Left Text */}
         <motion.h1
-          className="font-bold text-cyan-400 drop-shadow-[0_0_12px_rgba(0,255,255,0.45)] text-center"
+          className="font-bold  text-center"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <span className="text-fuchsia-400 text-xl md:text-3xl">Hi, I’m</span> <br />
-          <span className=" text-3xl md:text-[3.5rem] name">ASIF<br />AHMED</span>
+          <span className="text-amber-100/60 text-xl md:text-3xl font-light tracking-wider">Hi, I’m</span> <br />
+          <span
+            className="
+            relative z-20
+            text-4xl md:text-[4rem]
+            bg-clip-text text-transparent
+            bg-gradient-to-br from-amber-200 via-amber-100 to-slate-200
+            font-extralight leading-tight
+  "
+          // style={{ letterSpacing: "0.02em" }}
+          >
+            ASIF<br />AHMED
+          </span>
+
+
         </motion.h1>
 
 
         {/* Center Image */}
         <motion.div
-          className="relative w-40 h-40 md:w-52 md:h-52 rounded-full animate-pulse-glow overflow-hidden border-cyan-400 shadow-[0_0_30px_rgba(0,255,255,0.4)]"
-          initial={{ scale: 0.9, opacity: 0 }}
+          className="relative w-44 h-44 md:w-56 md:h-56 rounded-full overflow-hidden 
+                             border-2 border-amber-400/30 
+                             shadow-[0_0_80px_rgba(251,191,36,0.2),0_0_40px_rgba(251,191,36,0.15),inset_0_2px_4px_rgba(255,255,255,0.1)]"
+          style={{
+            animation: "luxury-glow 5s ease-in-out infinite"
+          }}
+          initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.9, ease: 'easeOut' }}
+          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
         >
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-transparent"></div>
           <img
-            src="https://picsum.photos/seed/portfolio/200/200"
+            src="/profile.jpeg"
             alt="Profile"
             className="object-cover w-full h-full"
           />
@@ -237,23 +253,26 @@ const Hero: React.FC = () => {
 
         {/* Right Text */}
         <motion.h1
-          className="font-bold text-cyan-400 drop-shadow-[0_0_12px_rgba(0,255,255,0.45)] text-center"
-          initial={{ opacity: 0, y: 18 }}
+          className="font-light tracking-tight text-center z-0"
+          style={{ fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif" }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <span className="text-2xl md:text-4xl">Creative</span><br />
-          {/* <span className="text-3xl md:text-6xl text-fuchsia-400">Technologist</span> */}
+          <span className="text-3xl md:text-5xl text-amber-100/80 font-light tracking-wide">Creative</span><br />
           <AuroraText>Technologist</AuroraText>
-
         </motion.h1>
       </div>
+
       <motion.p
-        className="max-w-2xl text-slate-200 text-lg md:text-2xl font-light mb-20"
-        style={{ textShadow: "0 0 10px rgba(0, 255, 255, 0.38)" }}
+        className="max-w-2xl text-slate-300 text-lg md:text-xl font-light leading-relaxed mb-20 tracking-wide"
+        style={{
+          fontFamily: "'Inter', 'SF Pro Display', sans-serif",
+          textShadow: "0 2px 20px rgba(0, 0, 0, 0.4)"
+        }}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.45, duration: 0.8, ease: "easeOut" }}
+        transition={{ delay: 0.5, duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
       >
         Passionate about building intelligent systems that <TextFlip /> <br />
         merging creativity with computation.
@@ -272,3 +291,4 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+

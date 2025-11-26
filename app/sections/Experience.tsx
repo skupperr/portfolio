@@ -302,23 +302,46 @@ export default function Experience() {
   const currentData = dataSources[activeTab];
 
   return (
-    <section className="relative py-20 md:py-32 px-4">
-      {/* Background grid layers */}
-      <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-      <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_center,_rgba(0,255,255,0.08),transparent_40%)]" />
+    <section id="experience" className="relative py-24 md:py-36 px-4 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      {/* Elegant Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(to_right,#1e293b08_1px,transparent_1px),linear-gradient(to_bottom,#1e293b08_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(251,191,36,0.04),transparent_50%)]" />
+      
+      {/* Premium Noise Texture */}
+      <div 
+        className="absolute inset-0 z-0 opacity-[0.015] mix-blend-overlay pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }}
+      ></div>
 
       {/* Foreground content */}
       <div className="container mx-auto relative z-10">
-        <h2
-          className="text-4xl md:text-5xl font-bold text-cyan-300 mb-8 text-center"
-          style={{ textShadow: "0 0 12px rgba(0, 255, 255, 0.5)" }}
-        >
-          CAREER TRAJECTORY
-        </h2>
+        
+        {/* Section Header */}
+        <div className="mb-16 text-center">
+          <h2
+            className="text-4xl md:text-5xl font-light tracking-wide text-transparent bg-clip-text bg-gradient-to-br from-amber-200 via-amber-100 to-slate-200 mb-6"
+            style={{ 
+              fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+              textShadow: '0 2px 30px rgba(251, 191, 36, 0.2)',
+              letterSpacing: '0.08em'
+            }}
+          >
+            Career Trajectory
+          </h2>
+          
+          {/* Decorative Element */}
+          <div className="flex items-center justify-center gap-3">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-amber-400/50"></div>
+            <div className="w-2 h-2 rounded-full bg-amber-400/50"></div>
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-amber-400/50"></div>
+          </div>
+        </div>
 
         {/* Tab Navigation */}
         <div
-          className="flex justify-center  space-x-2 md:space-x-4"
+          className="flex justify-center gap-4 mb-16"
           role="tablist"
         >
           {(["Experience", "Education", "Award"] as const).map((tab) => (
@@ -328,11 +351,17 @@ export default function Experience() {
               aria-selected={activeTab === tab}
               tabIndex={activeTab === tab ? 0 : -1}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 md:px-6 text-sm md:text-base font-semibold rounded-md border-2 transition-all duration-300 focus:outline-none  ${activeTab === tab
-                  ? "bg-cyan-500/20 border-cyan-400 text-cyan-300 shadow-[0_0_15px_rgba(0,255,255,0.5)]"
-                  : "bg-transparent border-slate-700 text-slate-400 hover:bg-slate-800/50 hover:border-slate-500"
+              className={`relative px-6 py-3 text-base font-light tracking-wide rounded-full backdrop-blur-xl transition-all duration-300 focus:outline-none ${
+                activeTab === tab
+                  ? "bg-gradient-to-br from-amber-400/20 to-amber-500/10 border border-amber-400/40 text-amber-100 shadow-[0_4px_24px_rgba(251,191,36,0.2)]"
+                  : "bg-gradient-to-br from-slate-800/40 to-slate-900/30 border border-slate-700/50 text-slate-400 hover:bg-slate-800/60 hover:border-slate-600/50 hover:text-slate-300"
               }`}
+              style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
             >
+              {/* Active indicator dot */}
+              {activeTab === tab && (
+                <span className="absolute -top-1 -right-1 w-2 h-2 bg-amber-400 rounded-full animate-pulse"></span>
+              )}
               {tab}
             </button>
           ))}

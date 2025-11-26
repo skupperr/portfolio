@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   motion,
   useScroll,
   useTransform,
   useSpring,
-  MotionValue,
 } from "framer-motion";
 import { cn } from "../lib/utils";
 import { Card, CardContent } from "./card";
@@ -52,18 +51,6 @@ const DEFAULT_EVENTS: TimelineEvent[] = [
     description:
       "Description of the achievement or milestone reached during this time period.",
   },
-  {
-    year: "2022",
-    title: "Important Milestone",
-    subtitle: "Organization Name",
-    description: "Details about this significant milestone and its impact.",
-  },
-  {
-    year: "2021",
-    title: "Key Event",
-    subtitle: "Organization Name",
-    description: "Information about this key event in the timeline.",
-  },
 ];
 
 export const ScrollTimeline = ({
@@ -72,7 +59,6 @@ export const ScrollTimeline = ({
   subtitle = "Scroll to explore the journey",
   animationOrder = "sequential",
   cardAlignment = "alternating",
-  lineColor = "",
   activeColor = "bg-primary",
   progressIndicator = true,
   cardVariant = "default",
@@ -86,7 +72,6 @@ export const ScrollTimeline = ({
   connectorStyle = "line",
   perspective = false,
   darkMode = false,
-  smoothScroll = true,
 }: ScrollTimelineProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -104,9 +89,7 @@ export const ScrollTimeline = ({
   });
 
   const progressHeight = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
-  // put this near the top of your component, after smoothProgress:
   const baseYOffset = useTransform(smoothProgress, [0, 1], [100, -100]);
-
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((v) => {
@@ -157,7 +140,7 @@ export const ScrollTimeline = ({
         scale: 1,
         rotateY: 0,
         transition: {
-          duration: 0.7,
+          duration: 0.8,
           delay: baseDelay,
           ease: [0.25, 0.1, 0.25, 1.0] as [number, number, number, number],
         },
@@ -168,56 +151,27 @@ export const ScrollTimeline = ({
 
   const getConnectorClasses = () => {
     const baseClasses = cn(
-      "absolute left-1/2 transform -translate-x-1/2 bg-cyan-800 w-[1px]",
+      "absolute left-1/2 transform -translate-x-1/2 bg-amber-900/30 w-[2px]",
     );
-    const widthStyle = `w-[${progressLineWidth}px]`;
-    switch (connectorStyle) {
-      case "dots":
-        return cn(baseClasses, "w-[3px] rounded-full");
-      case "dashed":
-        return cn(
-          baseClasses,
-          widthStyle,
-          `[mask-image:linear-gradient(to_bottom,black_33%,transparent_33%,transparent_66%,black_66%)] [mask-size:1px_12px]`
-        );
-      case "line":
-      default:
-        return cn(baseClasses, widthStyle);
-    }
+    return cn(baseClasses);
   };
 
   const getCardClasses = (index: number) => {
-    const baseClasses = "relative z-30 rounded-lg transition-all duration-300";
-    const variantClasses = {
-      default: "bg-card border shadow-sm",
-      elevated: "bg-card border border-border/40 shadow-md",
-      outlined: "bg-card/50 backdrop-blur border-2 border-primary/20",
-      filled: "bg-primary/10 border border-primary/30",
-    };
-    const effectClasses = {
-      none: "",
-      glow: "hover:shadow-[0_0_15px_rgba(var(--primary-rgb)/0.5)]",
-      shadow: "hover:shadow-lg hover:-translate-y-1",
-      bounce: "hover:scale-[1.03] hover:shadow-md active:scale-[0.97]",
-    };
+    const baseClasses = "relative z-30 rounded-2xl transition-all duration-500";
     const alignmentClassesDesktop =
       cardAlignment === "alternating"
         ? index % 2 === 0
-          ? "lg:mr-[calc(50%+20px)]"
-          : "lg:ml-[calc(50%+20px)]"
+          ? "lg:mr-[calc(50%+40px)]"
+          : "lg:ml-[calc(50%+40px)]"
         : cardAlignment === "left"
           ? "lg:mr-auto lg:ml-0"
           : "lg:ml-auto lg:mr-0";
-    const perspectiveClass = perspective
-      ? "transform transition-transform hover:rotate-y-1 hover:rotate-x-1"
-      : "";
 
     return cn(
       baseClasses,
-      variantClasses[cardVariant],
-      effectClasses[cardEffect],
       alignmentClassesDesktop,
-      "w-full lg:w-[calc(50%-40px)]"
+      "w-full lg:w-[calc(50%-50px)]",
+      "hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(251,191,36,0.15)]"
     );
   };
 
@@ -226,24 +180,18 @@ export const ScrollTimeline = ({
       ref={scrollRef}
       className={cn(
         "relative min-h-screen w-full overflow-hidden",
-        darkMode ? "bg-background text-foreground" : "",
         className
       )}
     >
-      <div className="text-center py-8 px-4">
-      </div>
-
-      <div className="relative max-w-6xl mx-auto px-4 pb-24">
+      <div className="relative max-w-6xl mx-auto px-4 pb-24 pt-12">
         <div className="relative mx-auto">
-          <div
-            className={cn(getConnectorClasses(), "h-full absolute top-0 z-10")}
-          ></div>
+          {/* Background connector line */}
+          <div className={cn(getConnectorClasses(), "h-full absolute top-0 z-10")}></div>
 
-          {/* === MODIFICATION START === */}
-          {/* Enhanced Progress Indicator with Traveling Glow */}
+          {/* Enhanced Progress Indicator with Luxury Glow */}
           {progressIndicator && (
             <>
-              {/* The main filled progress line */}
+              {/* Main progress line with gradient */}
               <motion.div
                 className="absolute top-0 z-10"
                 style={{
@@ -251,36 +199,30 @@ export const ScrollTimeline = ({
                   width: progressLineWidth,
                   left: "50%",
                   transform: "translateX(-50%)",
-                  borderRadius:
-                    progressLineCap === "round" ? "9999px" : "0px",
-                  background: `linear-gradient(to bottom, #22d3ee, #6366f1, #a855f7)`,
-                  // Enhanced shadow for a constant glow effect along the path
-                  boxShadow: `
-                    0 0 15px rgba(99,102,241,0.5),
-                    0 0 25px rgba(168,85,247,0.3)
-                  `,
+                  borderRadius: progressLineCap === "round" ? "9999px" : "0px",
+                  background: `linear-gradient(to bottom, #fbbf24, #f59e0b, #d97706)`,
+                  boxShadow: `0 0 20px rgba(251, 191, 36, 0.4), 0 0 40px rgba(251, 191, 36, 0.2)`,
                 }}
               />
-              {/* The traveling glow "comet" at the head of the line */}
+              
+              {/* Traveling glow comet */}
               <motion.div
                 className="absolute z-20"
                 style={{
                   top: progressHeight,
                   left: "50%",
                   translateX: "-50%",
-                  translateY: "-50%", // Center the comet on the line's end point
+                  translateY: "-50%",
                 }}
               >
                 <motion.div
-                  className="w-5 h-5 rounded-full" // Size of the comet core
+                  className="w-5 h-5 rounded-full"
                   style={{
-                    background:
-                      "radial-gradient(circle, rgba(168,85,247,0.8) 0%, rgba(99,102,241,0.5) 40%, rgba(34,211,238,0) 70%)",
-                    // Intense, layered glow effect for the comet
+                    background: "radial-gradient(circle, rgba(251,191,36,0.9) 0%, rgba(245,158,11,0.6) 40%, rgba(217,119,6,0) 70%)",
                     boxShadow: `
-                      0 0 15px 4px rgba(168, 85, 247, 0.6),
-                      0 0 25px 8px rgba(99, 102, 241, 0.4),
-                      0 0 40px 15px rgba(34, 211, 238, 0.2)
+                      0 0 15px 4px rgba(251, 191, 36, 0.6),
+                      0 0 25px 8px rgba(245, 158, 11, 0.4),
+                      0 0 40px 15px rgba(251, 191, 36, 0.2)
                     `,
                   }}
                   animate={{
@@ -295,12 +237,9 @@ export const ScrollTimeline = ({
               </motion.div>
             </>
           )}
-          {/* === MODIFICATION END === */}
 
           <div className="relative z-20">
             {events.map((event, index) => {
-              // --- before the return ---
-
               return (
                 <div
                   key={event.id || index}
@@ -308,7 +247,7 @@ export const ScrollTimeline = ({
                     timelineRefs.current[index] = el;
                   }}
                   className={cn(
-                    "relative flex items-center mb-20 py-4",
+                    "relative flex items-center mb-24 py-4",
                     "flex-col lg:flex-row",
                     cardAlignment === "alternating"
                       ? index % 2 === 0
@@ -319,6 +258,7 @@ export const ScrollTimeline = ({
                         : "lg:flex-row-reverse lg:justify-start"
                   )}
                 >
+                  {/* Timeline dot/logo */}
                   <div
                     className={cn(
                       "absolute top-1/2 transform -translate-y-1/2 z-30",
@@ -327,7 +267,7 @@ export const ScrollTimeline = ({
                   >
                     {event.logo ? (
                       <motion.div
-                        className="w-10 h-10 rounded-full overflow-hidden border-2 border-cyan-400 flex items-center justify-center shadow-[0_0_10px_rgba(0,255,255,0.4)]"
+                        className="w-12 h-12 rounded-full overflow-hidden border-2 border-amber-400/40 flex items-center justify-center shadow-[0_0_20px_rgba(251,191,36,0.3)] bg-slate-900"
                         animate={
                           index === activeIndex
                             ? { scale: [1, 1.15, 1], rotate: [0, 5, 0] }
@@ -341,21 +281,20 @@ export const ScrollTimeline = ({
                           className="w-full h-full object-cover rounded-full"
                         />
                       </motion.div>
-
                     ) : (
                       <motion.div
                         className={cn(
-                          "w-6 h-6 rounded-full border-4 bg-background flex items-center justify-center",
-                          index <= activeIndex ? "border-primary" : "border bg-card"
+                          "w-7 h-7 rounded-full border-4 bg-slate-900 flex items-center justify-center",
+                          index <= activeIndex ? "border-amber-400" : "border-amber-900/30"
                         )}
                         animate={
                           index <= activeIndex
                             ? {
                               scale: [1, 1.3, 1],
                               boxShadow: [
-                                "0 0 0px rgba(99,102,241,0)",
-                                "0 0 12px rgba(99,102,241,0.6)",
-                                "0 0 0px rgba(99,102,241,0)",
+                                "0 0 0px rgba(251,191,36,0)",
+                                "0 0 20px rgba(251,191,36,0.6)",
+                                "0 0 0px rgba(251,191,36,0)",
                               ],
                             }
                             : {}
@@ -370,11 +309,9 @@ export const ScrollTimeline = ({
                     )}
                   </div>
 
+                  {/* Timeline card */}
                   <motion.div
-                    className={cn(
-                      getCardClasses(index),
-                      "mt-12 lg:mt-0 border-cyan-500/40 border-2"
-                    )}
+                    className={cn(getCardClasses(index))}
                     variants={getCardVariants(index)}
                     initial="initial"
                     whileInView="whileInView"
@@ -385,50 +322,58 @@ export const ScrollTimeline = ({
                         : undefined
                     }
                   >
-
-                    <Card className="border-10 bg-[#000421]/50 rounded-lg backdrop-blur-sm">
-                      <CardContent className="p-6">
+                    <Card className="border-0 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90 rounded-2xl backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)] border border-amber-400/20 overflow-hidden">
+                      <CardContent className="p-6 md:p-8">
                         {dateFormat === "badge" ? (
-                          <div className="flex items-center mb-2">
+                          <div className="flex items-center gap-2 mb-3">
                             {event.icon || (
-                              <Calendar className="h-4 w-4 mr-2 text-fuchsia-400" />
+                              <Calendar className="h-4 w-4 text-amber-400" />
                             )}
                             <span
-                              className={cn(
-                                "text-sm font-bold",
-                                event.color
-                                  ? `text-${event.color}`
-                                  : "text-fuchsia-400"
-                              )}
+                              className="text-sm font-light tracking-wider text-amber-400"
+                              style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
                             >
                               {event.year}
                             </span>
                           </div>
                         ) : (
-                          <p className="text-lg font-bold text-primary mb-2">
+                          <p className="text-lg font-light text-amber-400 mb-3">
                             {event.year}
                           </p>
                         )}
-                        <h3 className="text-xl font-bold mb-1 text-cyan-300">
+                        
+                        <h3 
+                          className="text-xl md:text-2xl font-light text-transparent bg-clip-text bg-gradient-to-br from-amber-200 to-amber-100 mb-2"
+                          style={{ 
+                            fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
+                            letterSpacing: '0.02em'
+                          }}
+                        >
                           {event.title}
                         </h3>
+                        
                         {event.subtitle && (
-                          <p className="font-medium mb-2 text-slate-300">
+                          <p 
+                            className="font-light mb-4 text-slate-300 tracking-wide"
+                            style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                          >
                             {event.subtitle}
                           </p>
                         )}
-                        {/* <p className="text-slate-400">
-                          {event.description}
-                        </p> */}
-                        <ul className="list-disc list-outside pl-5 text-gray-300 text-sm leading-relaxed space-y-1">
+                        
+                        <ul 
+                          className="list-disc list-outside pl-5 text-slate-400 text-sm leading-relaxed space-y-2 font-light"
+                          style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
+                        >
                           {event.description
                             .split(/[\n;]/)
                             .filter((d) => d.trim() !== "")
                             .map((point, i) => (
-                              <li key={i}>{point.trim()}</li>
+                              <li key={i} className="hover:text-slate-300 transition-colors duration-200">
+                                {point.trim()}
+                              </li>
                             ))}
                         </ul>
-
                       </CardContent>
                     </Card>
                   </motion.div>

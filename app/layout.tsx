@@ -83,7 +83,6 @@ export default function RootLayout({
                     <Projects />
                     <Experience />
                     <Contact />
-                    {/* <ProjectDetailsPage/> */}
                   </>
                 ) : (
                   children

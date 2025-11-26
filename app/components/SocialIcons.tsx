@@ -31,12 +31,12 @@ function SocialIcons() {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
       transition={{
-        duration: 0.4,
-        ease: "easeInOut",
-        delay: 0.5,
+        duration: 0.6,
+        ease: [0.25, 0.1, 0.25, 1],
+        delay: 0.8,
       }}
       className="
         fixed bottom-0 left-16 z-50
@@ -46,18 +46,26 @@ function SocialIcons() {
     >
       <ul
         className="
-          list-none flex flex-col gap-10
-          after:block after:w-[2px] after:h-[90px] after:mx-auto after:bg-foreground/90
+          list-none flex flex-col gap-8
+          after:block after:w-px after:h-24 after:mx-auto 
+          after:bg-gradient-to-t after:from-amber-500 after:to-transparent
         "
       >
-        {socialLinks.map(({ name, icon, link }) => (
-          <li
+        {socialLinks.map(({ name, icon, link }, index) => (
+          <motion.li
             key={name}
             title={name}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.5,
+              ease: [0.25, 0.1, 0.25, 1],
+              delay: 1 + index * 0.1,
+            }}
             className="
               text-xl flex justify-center items-center
-              transition-transform duration-300 ease-in-out
-              hover:-translate-y-1
+              transition-transform duration-300 ease-out
+              hover:-translate-y-2
               last:mb-8 
             "
           >
@@ -65,16 +73,25 @@ function SocialIcons() {
               href={link}
               target="_blank"
               className="
-                p-2 text-foreground/90 duration-300 ease-in-out
-                outline-dashed outline-2 outline-transparent text-[23px]
-                hover:text-secondary focus:outline-secondary focus:-translate-y-1 focus:text-secondary
-                w-10 h-10 border rounded-full items-center inline-flex justify-center
-                relative bg-card/50 backdrop-blur-sm border-secondary/30 hover:border-secondary/60 transition-all
+                relative p-2.5 text-slate-400 
+                w-11 h-11 rounded-full flex items-center justify-center
+                bg-gradient-to-br from-slate-900/60 to-slate-800/40
+                backdrop-blur-xl border border-amber-400/20
+                shadow-[0_4px_16px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)]
+                transition-all duration-300 ease-out
+                hover:text-amber-300 hover:border-amber-400/40
+                hover:shadow-[0_8px_24px_rgba(251,191,36,0.2),inset_0_1px_0_rgba(255,255,255,0.08)]
+                hover:scale-110
+                focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:ring-offset-2 focus:ring-offset-slate-950
+                group
               "
             >
-              {icon}
+              {/* Hover glow effect */}
+              <span className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-400/0 to-amber-500/0 group-hover:from-amber-400/10 group-hover:to-amber-500/5 transition-all duration-300"></span>
+              
+              <span className="relative text-[20px]">{icon}</span>
             </Link>
-          </li>
+          </motion.li>
         ))}
       </ul>
     </motion.div>

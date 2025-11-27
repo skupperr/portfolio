@@ -14,8 +14,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Canvas } from "@react-three/fiber";
 import { Center, OrbitControls } from '@react-three/drei';
 import { FaLocationArrow } from "react-icons/fa6";
-
-import MagicButton from "@/components/MagicButton";
 import CanvasLoader from '@/components/loading';
 import DemoComputer from "@/components/demoComputer";
 
@@ -24,7 +22,7 @@ const projectImages = [
     id: 1,
     title: "Prove-My-Point",
     description: "Prove My Point is a full-stack AI-powered research assistant designed to help users back their arguments with reliable, science-backed information from real research papers.",
-    imageSrc: "/project1.jpg",
+    imageSrc: "./project1.jpg",
     techStack: [
       { icon: FaReact, name: "React" },
       { icon: SiFastapi, name: "FastAPI" },
@@ -33,14 +31,14 @@ const projectImages = [
       { icon: SiTailwindcss, name: "Tailwind" },
       { icon: SiLangchain, name: "LangChain" }
     ],
-    video: "/prove.mp4",
+    video: "./prove.mp4",
     tag: "prove-my-point",
   },
   {
     id: 2,
     title: "LifeLens",
     description: "A complete AI-powered personal decision assistant that integrates meal planning, productivity management, career learning guidance, and financial support — all in one intelligent web platform.",
-    imageSrc: "/project2.jpg",
+    imageSrc: "./project2.jpg",
     techStack: [
       { icon: SiFastapi, name: "FastAPI" },
       { icon: FaReact, name: "React" },
@@ -49,7 +47,7 @@ const projectImages = [
       { icon: SiLangchain, name: "LangChain" },
       { icon: DiRedis, name: "Redis" },
     ],
-    video: "/lifelens.mp4",
+    video: "./lifelens.mp4",
     tag: "lifelens",
   }
 ]

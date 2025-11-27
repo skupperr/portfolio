@@ -146,7 +146,7 @@ const About: React.FC = () => {
               {/* Image Container */}
               <div className="relative w-full h-full overflow-hidden rounded-xl">
                 <img
-                  src="About1.png"
+                  src="./About1.png"
                   alt="Asif U. Ahmed"
                   className="w-full h-full object-cover"
                 />

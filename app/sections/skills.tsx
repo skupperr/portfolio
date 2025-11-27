@@ -315,6 +315,7 @@ const skillsData: SkillCategory[] = [
       { name: 'OpenCV', icon: '/opencv.png', description: 'Processed and analyzed images and video streams.' },
       { name: 'NumPy', icon: '/numpy.png', description: 'Performed complex numerical computations efficiently.' },
       { name: 'Pandas', icon: '/pandas.png', description: 'Manipulated and analyzed large datasets with ease.' },
+      { name: 'Matplotlib', icon: '/matplotlib.png', description: 'Visualized data for analytical purposes.' },
     ],
   },
   {

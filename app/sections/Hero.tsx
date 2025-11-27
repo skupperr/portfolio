@@ -245,7 +245,7 @@ const Hero: React.FC = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-transparent"></div>
           <img
-            src="/profile.jpeg"
+            src="./profile.jpeg"
             alt="Profile"
             className="object-cover w-full h-full"
           />

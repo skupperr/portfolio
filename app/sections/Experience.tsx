@@ -248,7 +248,7 @@ const experienceData = [
     subtitle: "United International University",
     description:
       "Lab class assistance with faculty members \n Student Counseling \n Review lab classes topic as needed \n Tutorial Class beyond regular sessions",
-    logo: "uiu.jpg",
+    logo: "./uiu.jpg",
   },
 ];
 
@@ -259,7 +259,7 @@ const educationData = [
     subtitle: "Technische Hochschule Ingolstadt",
     description:
       "",
-      logo: "thi.png"
+      logo: "./thi.png"
   },
   {
     year: "July 2022 – Jan 2025",
@@ -267,7 +267,7 @@ const educationData = [
     subtitle: "United International University",
     description:
       "CGPA: 3.95/4.00 \n (69 credits completed out of 137)",
-    logo: "uiu.jpg",
+    logo: "./uiu.jpg",
   },
 ];
 

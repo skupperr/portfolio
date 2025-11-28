@@ -297,7 +297,7 @@ const ProjectDetailsPage = () => {
                           <div className="relative group">
                             <div className="relative w-full rounded-2xl overflow-hidden border border-amber-400/20 shadow-[0_12px_48px_rgba(0,0,0,0.5)]">
                               <img
-                                src={feature.images[currentImageIndex]}
+                                src={feature.images![currentImageIndex]}
                                 alt={`${feature.title} - Image ${currentImageIndex + 1}`}
                                 className="w-full h-auto object-contain"
                               />

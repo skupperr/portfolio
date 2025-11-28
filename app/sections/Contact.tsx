@@ -30,7 +30,18 @@ const Contact = () => {
 
     if (!formRef.current) return;
 
-    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+    // copy module-scope env vars to local consts so TypeScript can narrow their types
+    const serviceId = SERVICE_ID;
+    const templateId = TEMPLATE_ID;
+    const publicKey = PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS configuration is missing:", { serviceId, templateId, publicKey });
+      toast.error("Messaging service is not configured. Please contact the site admin.");
+      return;
+    }
+
+    emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
       .then(() => {
         toast.success("Message sent! I'll get back to you soon.", {
           description: "Thank you for reaching out.",

@@ -353,7 +353,7 @@ const fadeUp = {
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: delay / 1000, duration: 0.9, ease: [0.42, 0, 0.58, 1] },
+    transition: { delay: delay / 1000, duration: 0.9, ease: [0.42, 0, 0.58, 1] as const },
   }),
 };
 
@@ -362,7 +362,7 @@ const slideInLeft = {
   visible: (custom: number) => ({
     opacity: 1,
     x: 0,
-    transition: { delay: custom / 1000, duration: 0.9, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { delay: custom / 1000, duration: 0.9, ease: [0.25, 0.1, 0.25, 1] as const },
   }),
 };
 

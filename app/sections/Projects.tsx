@@ -137,7 +137,7 @@ function Projects() {
     )
 
     // Horizontal scroll animation with reduced distance
-    const panels = gsap.utils.toArray(".panel");
+    const panels = gsap.utils.toArray<HTMLElement>(".panel");
 
     const horizontalScroll = gsap.to(panels, {
       xPercent: -100 * (panels.length - 1),

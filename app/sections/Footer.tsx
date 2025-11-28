@@ -13,7 +13,7 @@ function Footer() {
   const router = useRouter();
     const pathname = usePathname();
   
-    const scrollToSection = (id) => {
+    const scrollToSection = (id: string) => {
       if (pathname === "/") {
         // Already on homepage → smooth-scroll
         const el = document.getElementById(id);

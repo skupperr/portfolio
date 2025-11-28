@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 function Loader({ isLoading, setIsLoading }: any) {
   const [displayedText, setDisplayedText] = useState("");
   const fullText = "from developer import asif_ahmed";
-  
+
   useEffect(() => {
     let currentIndex = 0;
     const typingInterval = setInterval(() => {
@@ -44,9 +44,9 @@ function Loader({ isLoading, setIsLoading }: any) {
           {/* Elegant Background */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b08_1px,transparent_1px),linear-gradient(to_bottom,#1e293b08_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(251,191,36,0.04),transparent_50%)]"></div>
-          
+
           {/* Premium Noise Texture */}
-          <div 
+          <div
             className="absolute inset-0 opacity-[0.015] mix-blend-overlay"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
@@ -75,8 +75,13 @@ function Loader({ isLoading, setIsLoading }: any) {
             className="relative z-10 max-w-2xl w-full mx-4"
           >
             {/* Terminal Window */}
-            <div className="bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90 backdrop-blur-xl rounded-2xl border border-amber-400/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_80px_rgba(251,191,36,0.08),inset_0_1px_0_rgba(255,255,255,0.05)] overflow-hidden">
-              
+            <div className="bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90 
+                backdrop-blur-xl rounded-2xl border border-amber-400/20 
+                shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_80px_rgba(251,191,36,0.08),inset_0_1px_0_rgba(255,255,255,0.05)]
+                overflow-x-auto overflow-y-hidden
+                max-w-full
+                md:overflow-visible mx-3">
+
               {/* Terminal Header */}
               <div className="flex items-center gap-2 px-4 py-3 bg-slate-950/50 border-b border-amber-400/10">
                 <div className="flex gap-2">
@@ -92,18 +97,13 @@ function Loader({ isLoading, setIsLoading }: any) {
               </div>
 
               {/* Terminal Content */}
-              <div className="p-8 font-mono text-lg md:text-xl">
+              <div className="p-6 md:p-8 font-mono text-sm md:text-xl whitespace-nowrap">
                 <div className="flex items-center gap-3">
-                  {/* Command Prompt */}
                   <span className="text-amber-400/80">→</span>
-                  
-                  {/* Typing Text */}
-                  <div className="flex-1">
+                  <div className="flex-1 overflow-x-auto">
                     <span className="text-slate-300" style={{ fontFamily: "'Fira Code', 'Monaco', 'Courier New', monospace" }}>
                       <span className="text-amber-200">{displayedText}</span>
                     </span>
-                    
-                    {/* Blinking Cursor */}
                     <motion.span
                       className="inline-block w-2 h-5 ml-1 bg-amber-400"
                       animate={{ opacity: [1, 0] }}
@@ -117,6 +117,7 @@ function Loader({ isLoading, setIsLoading }: any) {
                 </div>
               </div>
             </div>
+
 
             {/* Loading Indicator */}
             <motion.div

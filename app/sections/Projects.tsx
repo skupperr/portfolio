@@ -64,6 +64,8 @@ function Projects() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
+    const isMobile = window.innerWidth < 768;
+
     // Title animations
     gsap.fromTo(
       titleRef.current,
@@ -136,85 +138,127 @@ function Projects() {
       }
     )
 
-    // Horizontal scroll animation with reduced distance
     const panels = gsap.utils.toArray<HTMLElement>(".panel");
 
-    const horizontalScroll = gsap.to(panels, {
-      xPercent: -100 * (panels.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: triggerRef.current,
-        start: "top top",
-        end: () => "+=" + (window.innerHeight * 2),
-        pin: true,
-        scrub: 1,
-        snap: {
-          snapTo: 1 / (panels.length - 1),
-          duration: { min: 0.2, max: 0.3 },
-          delay: 0.1,
-        },
-        invalidateOnRefresh: true,
-      }
-    })
+    if (isMobile) {
+      // Mobile: Vertical scroll with individual animations
+      panels.forEach((panel, i) => {
+        const card = panel.querySelector(".project-card")
+        const image = panel.querySelector(".project-image")
+        const content = panel.querySelector(".project-content")
+        const techIcons = panel.querySelectorAll(".tech-icon")
 
-    // Panel animations - skip first panel so it starts visible
-    panels.forEach((panel, i) => {
-      const card = panel.querySelector(".project-card")
-      const image = panel.querySelector(".project-image")
-      const content = panel.querySelector(".project-content")
-      const techIcons = panel.querySelectorAll(".tech-icon")
-
-      if (i === 0) {
-        // First project is visible from start
+        // Set initial visible state
         gsap.set(card, { scale: 1, opacity: 1 })
         gsap.set(image, { x: 0, opacity: 1 })
         gsap.set(content, { x: 0, opacity: 1 })
         gsap.set(techIcons, { scale: 1, opacity: 1 })
-        return;
-      }
 
-      // Animate other projects as they come into view
-      const tl = gsap.timeline({
+        // Animate on scroll into view
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: panel,
+            start: "top 80%",
+            end: "top 20%",
+            toggleActions: "play none none reverse",
+          }
+        })
+
+        tl.fromTo(
+          card,
+          {
+            scale: 0.85,
+            opacity: 0,
+            y: 50
+          },
+          {
+            scale: 1,
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out"
+          }
+        )
+      })
+    } else {
+      // Desktop: Horizontal scroll animation
+      const horizontalScroll = gsap.to(panels, {
+        xPercent: -100 * (panels.length - 1),
+        ease: "none",
         scrollTrigger: {
-          trigger: panel,
-          containerAnimation: horizontalScroll,
-          start: "left center",
-          end: "center center",
-          scrub: true,
+          trigger: triggerRef.current,
+          start: "top top",
+          end: () => "+=" + (window.innerHeight * 2),
+          pin: true,
+          scrub: 1,
+          snap: {
+            snapTo: 1 / (panels.length - 1),
+            duration: { min: 0.2, max: 0.3 },
+            delay: 0.1,
+          },
+          invalidateOnRefresh: true,
         }
       })
 
-      tl.fromTo(
-        card,
-        {
-          scale: 0.85,
-          opacity: 0
-        },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.5,
+      // Panel animations - skip first panel so it starts visible
+      panels.forEach((panel, i) => {
+        const card = panel.querySelector(".project-card")
+        const image = panel.querySelector(".project-image")
+        const content = panel.querySelector(".project-content")
+        const techIcons = panel.querySelectorAll(".tech-icon")
+
+        if (i === 0) {
+          // First project is visible from start
+          gsap.set(card, { scale: 1, opacity: 1 })
+          gsap.set(image, { x: 0, opacity: 1 })
+          gsap.set(content, { x: 0, opacity: 1 })
+          gsap.set(techIcons, { scale: 1, opacity: 1 })
+          return;
         }
-      )
-        .fromTo(
-          image,
-          { x: -50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.3 },
-          0.1
+
+        // Animate other projects as they come into view
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: panel,
+            containerAnimation: horizontalScroll,
+            start: "left center",
+            end: "center center",
+            scrub: true,
+          }
+        })
+
+        tl.fromTo(
+          card,
+          {
+            scale: 0.85,
+            opacity: 0
+          },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.5,
+          }
         )
-        .fromTo(
-          content,
-          { x: 50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.3 },
-          0.1
-        )
-        .fromTo(
-          techIcons,
-          { scale: 0, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.2, stagger: 0.05 },
-          0.3
-        )
-    })
+          .fromTo(
+            image,
+            { x: -50, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.3 },
+            0.1
+          )
+          .fromTo(
+            content,
+            { x: 50, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.3 },
+            0.1
+          )
+          .fromTo(
+            techIcons,
+            { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.2, stagger: 0.05 },
+            0.3
+          )
+      })
+    }
 
     // Cleanup
     return () => {
@@ -264,14 +308,14 @@ function Projects() {
       </div>
 
       <div ref={triggerRef} className="overflow-hidden" style={{ opacity: 0 }}>
-        <div ref={horizontalRef} className="flex">
+        <div ref={horizontalRef} className="flex md:flex-row flex-col">
           {projectImages.map((project) => {
             return (
-              <div key={project.id} className="panel flex-shrink-0 w-screen h-screen relative flex items-center justify-center px-8">
+              <div key={project.id} className="panel flex-shrink-0 w-screen md:h-screen h-auto relative flex items-center justify-center px-8 py-8 md:py-0">
                 <div className="project-card max-w-5xl w-full bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90 backdrop-blur-xl rounded-3xl overflow-hidden border border-amber-400/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_80px_rgba(251,191,36,0.08),inset_0_1px_0_rgba(255,255,255,0.05)] hover:border-amber-400/40 hover:shadow-[0_12px_48px_rgba(251,191,36,0.15)] transition-all duration-500">
                   <div className="flex flex-col md:flex-row h-full">
                     {/* Left side - Image */}
-                    <div className="project-image md:w-1/2 relative overflow-hidden pointer-events-none bg-slate-950/50">
+                    <div className="project-image md:w-1/2 h-[300px] md:h-auto relative overflow-hidden pointer-events-none bg-slate-950/50">
                       <div className="absolute inset-0 bg-gradient-to-br from-amber-400/5 to-transparent z-10"></div>
 
                       <div

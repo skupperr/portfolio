@@ -17,6 +17,139 @@ const skills = [
 
 
 
+// const FloatingTag: React.FC<{
+//   name: string;
+//   top: string;
+//   left: string;
+//   index: number;
+//   delay: number;
+// }> = ({ name, top, left, index, delay }) => {
+//   const [isDragging, setIsDragging] = useState(false);
+//   const controls = useAnimationControls();
+
+//   useEffect(() => {
+//     const startAnimation = async () => {
+//       await new Promise((res) => setTimeout(res, delay * 1000));
+
+//       // === Spiral-in with neon trail ===
+//       await controls.start({
+//         opacity: [0, 1],
+//         scale: [0.3, 1.2, 1],
+//         rotate: [-25, 10, 0],
+//         x: [0, 5, 0],
+//         y: [0, -5, 0],
+//         filter: [
+//           // "drop-shadow(0 0 5px rgba(255, 0, 255, 0.6))",
+//           // "drop-shadow(0 0 20px rgba(255, 0, 255, 0.8))",
+//           // "drop-shadow(0 0 8px rgba(255, 0, 255, 0.6))",
+//         ],
+//         transition: {
+//           duration: 1.5,
+//           ease: "easeOut",
+//         },
+//       });
+
+//       // === Begin floating ===
+//       startFloating();
+//     };
+
+//     const startFloating = () => {
+//       const amplitude = 4 + Math.random() * 4;
+//       const duration = 5 + Math.random() * 3;
+//       const phase = Math.random() * 2 * Math.PI;
+
+//       controls.start({
+//         x: [0, Math.sin(phase) * amplitude, -Math.sin(phase) * amplitude, 0],
+//         y: [0, -Math.cos(phase) * amplitude, Math.cos(phase) * amplitude, 0],
+//         scale: 1, // lock in consistent scale
+//         transition: {
+//           duration,
+//           repeat: Infinity,
+//           repeatType: "mirror",
+//           ease: "easeInOut",
+//         },
+//       });
+//     };
+
+//     startAnimation();
+//   }, [controls, delay]);
+
+
+//   const handleDragStart = () => {
+//     setIsDragging(true);
+//     controls.stop();
+//   };
+
+//   const handleDragEnd = async () => {
+//     setIsDragging(false);
+
+//     // Smooth return — explicitly reset scale to avoid shrink bug
+//     await controls.start({
+//       x: 0,
+//       y: 0,
+//       scale: 1,
+//       transition: {
+//         duration: 1.4,
+//         ease: [0.25, 0.1, 0.25, 1],
+//       },
+//     });
+
+//     // Restart floating
+//     const amplitude = 4 + Math.random() * 4;
+//     const duration = 5 + Math.random() * 3;
+//     const phase = Math.random() * 2 * Math.PI;
+
+//     controls.start({
+//       x: [0, Math.sin(phase) * amplitude, -Math.sin(phase) * amplitude, 0],
+//       y: [0, -Math.cos(phase) * amplitude, Math.cos(phase) * amplitude, 0],
+//       scale: 1,
+//       transition: {
+//         duration,
+//         repeat: Infinity,
+//         repeatType: "mirror",
+//         ease: "easeInOut",
+//       },
+//     });
+//   };
+
+//   return (
+//     <motion.div
+//       className="
+//             absolute px-6 py-2.5 rounded-full
+//             border border-amber-400/20 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90
+//             text-amber-50 backdrop-blur-xl
+//             shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]
+//             text-sm md:text-base font-light tracking-wide
+//             select-none cursor-grab whitespace-nowrap
+//             hover:border-amber-400/40 hover:shadow-[0_8px_40px_rgba(251,191,36,0.15)]
+//           "
+//       style={{
+//         top,
+//         left,
+//         transform: "translate(-50%, -50%)",
+//         fontFamily: "'Inter', 'SF Pro Display', -apple-system, system-ui, sans-serif",
+//         letterSpacing: "0.02em",
+//       }}
+//       drag
+//       dragMomentum={false}
+//       dragElastic={0.3}
+//       dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+//       whileDrag={{
+//         scale: 1.03,
+//         cursor: "grabbing",
+//         boxShadow: "0 12px 48px rgba(251, 191, 36, 0.25), inset 0 1px 0 rgba(255,255,255,0.1)",
+//         borderColor: "rgba(251, 191, 36, 0.5)",
+//       }}
+//       onDragStart={handleDragStart}
+//       onDragEnd={handleDragEnd}
+//       animate={controls}
+//       initial={{ opacity: 0, scale: 0.9, y: 10 }}
+//     >
+//       {name}
+//     </motion.div>
+//   );
+// };
+
 const FloatingTag: React.FC<{
   name: string;
   top: string;
@@ -26,30 +159,49 @@ const FloatingTag: React.FC<{
 }> = ({ name, top, left, index, delay }) => {
   const [isDragging, setIsDragging] = useState(false);
   const controls = useAnimationControls();
+  const [mobilePos, setMobilePos] = useState<{ top: string; left: string; scale: number }>({
+    top,
+    left,
+    scale: 1,
+  });
+
+  // Update mobile positions on mount
+  useEffect(() => {
+    const updateMobile = () => {
+      if (window.innerWidth < 768) {
+        // Demo values for mobile; you can tweak later
+        const demoMobilePositions = [
+          { top: "20%", left: "3%", scale: 0.8 },
+          { top: "15%", left: "67%", scale: 0.8 },
+          { top: "58%", left: "-5%", scale: 0.8 },
+          { top: "30%", left: "60%", scale: 0.8 },
+          { top: "73%", left: "30%", scale: 0.8 },
+          { top: "56%", left: "60%", scale: 0.8 },
+        ];
+        setMobilePos(demoMobilePositions[index] || { top, left, scale: 0.7 });
+      } else {
+        setMobilePos({ top, left, scale: 1 });
+      }
+    };
+
+    updateMobile();
+    window.addEventListener("resize", updateMobile);
+    return () => window.removeEventListener("resize", updateMobile);
+  }, [index, top, left]);
 
   useEffect(() => {
     const startAnimation = async () => {
       await new Promise((res) => setTimeout(res, delay * 1000));
 
-      // === Spiral-in with neon trail ===
       await controls.start({
         opacity: [0, 1],
-        scale: [0.3, 1.2, 1],
+        scale: [0.3, 1.2, mobilePos.scale],
         rotate: [-25, 10, 0],
         x: [0, 5, 0],
         y: [0, -5, 0],
-        filter: [
-          // "drop-shadow(0 0 5px rgba(255, 0, 255, 0.6))",
-          // "drop-shadow(0 0 20px rgba(255, 0, 255, 0.8))",
-          // "drop-shadow(0 0 8px rgba(255, 0, 255, 0.6))",
-        ],
-        transition: {
-          duration: 1.5,
-          ease: "easeOut",
-        },
+        transition: { duration: 1.5, ease: "easeOut" },
       });
 
-      // === Begin floating ===
       startFloating();
     };
 
@@ -61,19 +213,13 @@ const FloatingTag: React.FC<{
       controls.start({
         x: [0, Math.sin(phase) * amplitude, -Math.sin(phase) * amplitude, 0],
         y: [0, -Math.cos(phase) * amplitude, Math.cos(phase) * amplitude, 0],
-        scale: 1, // lock in consistent scale
-        transition: {
-          duration,
-          repeat: Infinity,
-          repeatType: "mirror",
-          ease: "easeInOut",
-        },
+        scale: mobilePos.scale,
+        transition: { duration, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" },
       });
     };
 
     startAnimation();
-  }, [controls, delay]);
-
+  }, [controls, delay, mobilePos.scale]);
 
   const handleDragStart = () => {
     setIsDragging(true);
@@ -83,18 +229,13 @@ const FloatingTag: React.FC<{
   const handleDragEnd = async () => {
     setIsDragging(false);
 
-    // Smooth return — explicitly reset scale to avoid shrink bug
     await controls.start({
       x: 0,
       y: 0,
-      scale: 1,
-      transition: {
-        duration: 1.4,
-        ease: [0.25, 0.1, 0.25, 1],
-      },
+      scale: mobilePos.scale,
+      transition: { duration: 1.4, ease: [0.25, 0.1, 0.25, 1] },
     });
 
-    // Restart floating
     const amplitude = 4 + Math.random() * 4;
     const duration = 5 + Math.random() * 3;
     const phase = Math.random() * 2 * Math.PI;
@@ -102,30 +243,25 @@ const FloatingTag: React.FC<{
     controls.start({
       x: [0, Math.sin(phase) * amplitude, -Math.sin(phase) * amplitude, 0],
       y: [0, -Math.cos(phase) * amplitude, Math.cos(phase) * amplitude, 0],
-      scale: 1,
-      transition: {
-        duration,
-        repeat: Infinity,
-        repeatType: "mirror",
-        ease: "easeInOut",
-      },
+      scale: mobilePos.scale,
+      transition: { duration, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" },
     });
   };
 
   return (
     <motion.div
-      className="
-            absolute px-6 py-2.5 rounded-full
-            border border-amber-400/20 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90
-            text-amber-50 backdrop-blur-xl
-            shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]
-            text-sm md:text-base font-light tracking-wide
-            select-none cursor-grab whitespace-nowrap
-            hover:border-amber-400/40 hover:shadow-[0_8px_40px_rgba(251,191,36,0.15)]
-          "
+      className={`
+        absolute px-6 py-2.5 rounded-full
+        border border-amber-400/20 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90
+        text-amber-50 backdrop-blur-xl
+        shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]
+        text-xs md:text-base font-light tracking-wide
+        select-none cursor-grab whitespace-nowrap
+        hover:border-amber-400/40 hover:shadow-[0_8px_40px_rgba(251,191,36,0.15)]
+      `}
       style={{
-        top,
-        left,
+        top: mobilePos.top,
+        left: mobilePos.left,
         transform: "translate(-50%, -50%)",
         fontFamily: "'Inter', 'SF Pro Display', -apple-system, system-ui, sans-serif",
         letterSpacing: "0.02em",
@@ -135,7 +271,7 @@ const FloatingTag: React.FC<{
       dragElastic={0.3}
       dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
       whileDrag={{
-        scale: 1.03,
+        scale: mobilePos.scale * 1.03,
         cursor: "grabbing",
         boxShadow: "0 12px 48px rgba(251, 191, 36, 0.25), inset 0 1px 0 rgba(255,255,255,0.1)",
         borderColor: "rgba(251, 191, 36, 0.5)",
@@ -149,6 +285,7 @@ const FloatingTag: React.FC<{
     </motion.div>
   );
 };
+
 
 
 

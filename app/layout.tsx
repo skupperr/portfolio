@@ -1,9 +1,8 @@
 "use client"
-import type { Metadata } from "next";
 import { Tektur, Orbitron } from "next/font/google";
 import { Toaster } from 'sonner';
 import "./globals.css";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePathname } from "next/navigation";
@@ -20,7 +19,6 @@ import Contact from "./sections/Contact";
 import Projects from "./sections/Projects";
 import Experience from "./sections/Experience";
 import SkillsSection from "./sections/skills";
-import ProjectDetailsPage from "./sections/projectDetailsPage";
 
 const tektur = Tektur({
   subsets: ['latin'],

@@ -246,7 +246,7 @@
 
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { motion, useInView, Easing } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 
 interface Skill {
   name: string;

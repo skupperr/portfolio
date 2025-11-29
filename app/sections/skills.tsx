@@ -292,7 +292,7 @@ const skillsData: SkillCategory[] = [
   {
     title: 'Backend Development',
     skills: [
-      { name: 'FastAPI', icon: '/fastapi.png', description: 'Developed high-performance, scalable backend APIs.' },
+      { name: 'FastAPI', icon: '/fast.png', description: 'Developed high-performance, scalable backend APIs.' },
       { name: 'Node.js', icon: '/nodejs.png', description: 'Built fast and efficient server-side applications.' },
       { name: 'Express.js', icon: '/expressjs.png', description: 'Crafted flexible and minimalist web servers and APIs.' },
     ],
@@ -322,7 +322,7 @@ const skillsData: SkillCategory[] = [
     title: 'Databases',
     skills: [
       { name: 'MySQL', icon: '/mysql.png', description: 'Designed and maintained robust relational databases.' },
-      { name: 'SQLite', icon: '/sqlite.png', description: 'Utilized for lightweight, embedded database solutions.' },
+      { name: 'SQLite', icon: '/sql2.png', description: 'Utilized for lightweight, embedded database solutions.' },
       { name: 'FireBase', icon: '/firebase.png', description: 'Built frontend services that directly syncs with database.' },
       { name: 'Cloudinary', icon: '/cloudinary.png', description: 'Built systems with streamlined media management.' },
       { name: 'Redis', icon: '/redis.png', description: 'Built systems with optimized caching.' },

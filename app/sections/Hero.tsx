@@ -172,11 +172,11 @@ const FloatingTag: React.FC<{
         // Demo values for mobile; you can tweak later
         const demoMobilePositions = [
           { top: "20%", left: "3%", scale: 0.8 },
-          { top: "15%", left: "67%", scale: 0.8 },
+          { top: "15%", left: "69%", scale: 0.8 },
           { top: "58%", left: "-5%", scale: 0.8 },
-          { top: "30%", left: "60%", scale: 0.8 },
+          { top: "30%", left: "63%", scale: 0.8 },
           { top: "73%", left: "30%", scale: 0.8 },
-          { top: "56%", left: "60%", scale: 0.8 },
+          { top: "56%", left: "62%", scale: 0.8 },
         ];
         setMobilePos(demoMobilePositions[index] || { top, left, scale: 0.7 });
       } else {

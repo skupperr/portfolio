@@ -80,7 +80,7 @@ function Loader({ isLoading, setIsLoading }: any) {
                 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_80px_rgba(251,191,36,0.08),inset_0_1px_0_rgba(255,255,255,0.05)]
                 overflow-x-auto overflow-y-hidden
                 max-w-full
-                md:overflow-visible mx-3">
+                mx-3">
 
               {/* Terminal Header */}
               <div className="flex items-center gap-2 px-4 py-3 bg-slate-950/50 border-b border-amber-400/10">

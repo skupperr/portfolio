@@ -380,9 +380,9 @@ const Hero: React.FC = () => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-transparent"></div>
+          {/* <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-transparent"></div> */}
           <img
-            src="./profile.jpeg"
+            src="./profile.png"
             alt="Profile"
             className="object-cover w-full h-full"
           />

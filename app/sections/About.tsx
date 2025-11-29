@@ -470,7 +470,7 @@ const About: React.FC = () => {
                   textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)'
                 }}
               >
-                I'm a computer science student working at the intersection of AI, backend development, and modern web engineering. With a background in full-stack development, AI applications and a deep dive into agentic systems and system design, I specialize in crafting complex applications from the ground up.
+                I'm a Computer Science & Artificial Intelligence student working at the intersection of AI, backend development, and modern web engineering. With a background in full-stack development, AI applications and a deep dive into agentic systems and system design, I specialize in crafting complex applications from the ground up.
               </p>
 
               <p

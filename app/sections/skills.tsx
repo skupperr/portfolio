@@ -326,6 +326,8 @@ const skillsData: SkillCategory[] = [
       { name: 'FireBase', icon: '/firebase.png', description: 'Built frontend services that directly syncs with database.' },
       { name: 'Cloudinary', icon: '/cloudinary.png', description: 'Built systems with streamlined media management.' },
       { name: 'Redis', icon: '/redis.png', description: 'Built systems with optimized caching.' },
+      { name: 'PostgreSQL', icon: '/postgrespng.png', description: 'Designed and maintained robust relational databases.' },
+      { name: 'SupaBase', icon: '/supabase.png', description: 'Designed and maintained robust relational databases.' },
     ],
   },
   {
@@ -333,7 +335,7 @@ const skillsData: SkillCategory[] = [
     skills: [
       { name: 'BeautifulSoup', icon: null, description: 'Parsed HTML and XML for web scraping tasks.' },
       { name: 'Playwright', icon: '/playwright.png', description: 'Automated browser tasks for testing, scraping and Agentic workflows.' },
-      { name: 'Clerk', icon: '/clerk.png', description: 'Authentication purposes.' },
+      { name: 'Clerk', icon: '/clerk.png', description: 'Implemented seamless user authentication and user billing.' },
       { name: 'HuggingFace', icon: '/huggingface.png', description: '' },
     ],
   },
@@ -343,6 +345,7 @@ const skillsData: SkillCategory[] = [
       { name: 'Git', icon: '/git.png', description: 'Managed source code versions for collaborative projects.' },
       { name: 'GitHub', icon: '/github.png', description: 'Hosted and collaborated on software development projects.' },
       { name: 'Docker', icon: '/docker.png', description: '' },
+      { name: 'Sentry', icon: '/sentry.png', description: 'Monitor critical errors and performance issues.' },
     ],
   },
 ];

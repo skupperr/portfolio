@@ -326,7 +326,7 @@ const skillsData: SkillCategory[] = [
       { name: 'FireBase', icon: '/firebase.png', description: 'Built frontend services that directly syncs with database.' },
       { name: 'Cloudinary', icon: '/cloudinary.png', description: 'Built systems with streamlined media management.' },
       { name: 'Redis', icon: '/redis.png', description: 'Built systems with optimized caching.' },
-      { name: 'PostgreSQL', icon: '/postgrespng.png', description: 'Designed and maintained robust relational databases.' },
+      { name: 'PostgreSQL', icon: '/postgres.png', description: 'Designed and maintained robust relational databases.' },
       { name: 'SupaBase', icon: '/supabase.png', description: 'Designed and maintained robust relational databases.' },
     ],
   },

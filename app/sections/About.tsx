@@ -419,7 +419,7 @@ const About: React.FC = () => {
           >
             <div className="relative w-56 h-72 sm:w-64 sm:h-80 md:w-80 md:h-96 lg:w-96 lg:h-[28rem] p-3 rounded-2xl">
               {/* Glass Card Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-800/40 via-slate-900/30 to-slate-800/40 backdrop-blur-xl rounded-2xl border border-amber-400/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_80px_rgba(251,191,36,0.08),inset_0_1px_0_rgba(255,255,255,0.05)]"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-800/40 via-slate-900/30 to-slate-800/40  rounded-2xl border border-amber-400/20 shadow-[0_8px_32px_rgba(0,0,0,0.4),0_0_80px_rgba(251,191,36,0.08),inset_0_1px_0_rgba(255,255,255,0.05)]"></div>
 
               {/* Image Container */}
               <div className="relative w-full h-full overflow-hidden rounded-xl">
@@ -445,7 +445,7 @@ const About: React.FC = () => {
               opacity: 0
             }}
           >
-            <div className="flex flex-col gap-4 md:gap-6 text-center md:text-left p-5 sm:p-6 md:p-8 rounded-2xl bg-gradient-to-br from-slate-900/40 via-slate-800/30 to-slate-900/40 backdrop-blur-md border border-amber-400/15 shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.03)]">
+            <div className="flex flex-col gap-4 md:gap-6 text-center md:text-left p-5 sm:p-6 md:p-8 rounded-2xl bg-gradient-to-br from-slate-900/40 via-slate-800/30 to-slate-900/40  border border-amber-400/15 shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.03)]">
 
               {/* Heading */}
               <h2
@@ -464,33 +464,42 @@ const About: React.FC = () => {
 
               {/* Body Text */}
               <p
-                className="text-sm sm:text-base md:text-lg font-light text-slate-300 leading-relaxed"
+                className="text-sm sm:text-base md:text-md text-slate-300 leading-relaxed"
                 style={{
                   fontFamily: "'Inter', 'SF Pro Display', sans-serif",
                   textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)'
                 }}
               >
-                I'm a Computer Science & Artificial Intelligence student working at the intersection of AI, backend development, and modern web engineering. With a background in full-stack development, AI applications and a deep dive into agentic systems and system design, I specialize in crafting complex applications from the ground up.
+                I’m a Computer Science & Artificial Intelligence student specialized in developing Full-Stack Software and AI applications. With a strong foundation in backend APIs, databases, frontend interfaces, and AI integrations, I turn ideas into reliable systems that deliver real user value. My work sits at the intersection of software engineering, system design, and applied machine learning, from scalable backends and async data pipelines to RAG systems, agentic workflows, and AI-powered interfaces.
               </p>
 
               <p
-                className="text-sm sm:text-base md:text-lg font-light text-slate-300 leading-relaxed"
+                className="text-sm sm:text-base md:text-md text-slate-300 leading-relaxed"
                 style={{
                   fontFamily: "'Inter', 'SF Pro Display', sans-serif",
                   textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)'
                 }}
               >
-                I thrive on challenges that require both analytical rigor and a creative spark, focusing on problem-solving from first principles and shipping clean, reliable systems. My interests keep expanding into AI applications, retrieval systems, and intelligent tools that make learning and decision-making easier.
+                I work from first principles. That means breaking problems down, choosing boring-but-solid infrastructure when needed, and using modern AI only where it adds real leverage. I’ve built production-ready Microservice and Monolithic applications using modern frontend & backend frameworks, scalable databases, caching layers, vector databases, and production-grade REST APIs.
+              </p>
+              <p
+                className="text-sm sm:text-base md:text-md text-slate-300 leading-relaxed"
+                style={{
+                  fontFamily: "'Inter', 'SF Pro Display', sans-serif",
+                  textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)'
+                }}
+              >
+                Right now, I’m focused on agent workflows, applied ML, and scalable system design, building architectures that handle real traffic, failure, and growth.
               </p>
 
               {/* Download Resume Button */}
-              <div className="mt-2 md:mt-4">
+              {/* <div className="mt-2 md:mt-4">
                 <a
                   href="/resume.pdf"
                   download="Asif_Ahmed_Resume.pdf"
                   className="inline-flex items-center gap-2 sm:gap-3 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full
                     bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90
-                    border border-amber-400/30 text-amber-50 backdrop-blur-xl
+                    border border-amber-400/30 text-amber-50
                     shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]
                     font-light tracking-wide text-xs sm:text-sm md:text-base
                     transition-all duration-300
@@ -502,7 +511,6 @@ const About: React.FC = () => {
                     letterSpacing: "0.02em",
                   }}
                 >
-                  {/* Download Icon */}
                   <svg
                     className="w-4 h-4 sm:w-5 sm:h-5"
                     fill="none"
@@ -518,7 +526,7 @@ const About: React.FC = () => {
                   </svg>
                   Download Resume
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

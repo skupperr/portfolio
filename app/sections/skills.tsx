@@ -215,8 +215,8 @@
 //       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
 
 //       <div className="container mx-auto max-w-6xl text-center z-10 relative ">
-        
-       
+
+
 //         <motion.h2
 //           className="text-4xl md:text-5xl font-bold text-fuchsia-400 mb-16"
 //           style={{ textShadow: '0 0 12px rgba(217, 70, 239, 0.5)' }}
@@ -263,91 +263,161 @@ const skillsData: SkillCategory[] = [
   {
     title: 'Core Competencies',
     skills: [
-      { name: 'Object Oriented Programming', icon: '', description: 'Designed modular and reusable software components.' },
-      { name: 'Data Structures & Algorithms', icon: '', description: 'Implemented efficient algorithms for complex problem-solving.' },
-      { name: 'Database Management System', icon: '', description: 'Managed and optimized relational database systems.' },
-      { name: 'Web Development', icon: '', description: 'Built responsive and dynamic full-stack web applications.' },
-      { name: 'Full-Stack Development', icon: '', description: 'Built responsive and dynamic full-stack web applications.' },
-      { name: 'Software Development', icon: '', description: 'Built responsive and dynamic full-stack web applications.' },
-      { name: 'Machine Learning', icon: '', description: 'Developed predictive models and AI-driven features.' },
+      {
+        name: 'Software Development',
+        icon: '',
+        description: 'Designing, building, and maintaining scalable, production-grade software systems with a focus on reliability, performance, and maintainability.'
+      },
+      {
+        name: 'System Design',
+        icon: '',
+        description: 'Architecting scalable systems with clear separation of concerns, fault tolerance, and long-term maintainability.'
+      },
+      {
+        name: 'Full-Stack Development',
+        icon: '',
+        description: 'Building end-to-end applications across frontend interfaces, backend services, and data layers.'
+      },
+      {
+        name: 'Microservice Architecture',
+        icon: '',
+        description: 'Designing distributed systems with independently deployable services, API contracts, and scalable infrastructure.'
+      },
+      {
+        name: 'REST API Development',
+        icon: '',
+        description: 'Designing secure, scalable, and production-ready APIs for service-to-service and client-server communication.'
+      },
+      {
+        name: 'Database Systems',
+        icon: '',
+        description: 'Designing and managing relational, NoSQL, and vector databases with optimized schemas and data flows.'
+      },
+      {
+        name: 'Object-Oriented Programming',
+        icon: '',
+        description: 'Building modular, reusable, and maintainable software using strong abstraction and design principles.'
+      },
+      {
+        name: 'Data Structures & Algorithms',
+        icon: '',
+        description: 'Applying efficient algorithms and data models to solve complex computational problems.'
+      },
+      {
+        name: 'AI Applications',
+        icon: '',
+        description: 'Developing intelligent systems that integrate machine learning, automation, and AI-driven workflows.'
+      },
+      {
+        name: 'Retrieval-Augmented Generation (RAG)',
+        icon: '',
+        description: 'Building AI systems that combine vector search, knowledge retrieval, and generative models for accurate responses.'
+      },
+      {
+        name: 'Agentic Systems',
+        icon: '',
+        description: 'Designing autonomous AI workflows using planning, memory, and tool-usage architectures.'
+      },
+      {
+        name: 'Machine Learning',
+        icon: '',
+        description: 'Applying ML models and pipelines for prediction, classification, and intelligent automation.'
+      },
+      {
+        name: 'Web Automation',
+        icon: '',
+        description: 'Automating workflows, data pipelines, and system interactions using programmatic tools and scripts.'
+      },
       { name: 'Image Processing', icon: '', description: 'Applied computer vision techniques for image analysis.' },
       { name: 'Web Scraping', icon: '', description: 'Automated data extraction from various web sources.' },
-      { name: 'Retrieval-Augmented Generation', icon: '', description: 'Automated data extraction from various web sources.' },
-      { name: 'Agentic System', icon: '', description: 'Automated data extraction from various web sources.' },
     ],
   },
   {
     title: 'Programming Languages',
     skills: [
-      { name: 'Python', icon: '/python.png', description: 'Leveraged for backend development, AI, and scripting.' },
-      { name: 'C/C++', icon: '/c.png', description: 'Utilized for performance-critical applications.' },
-      { name: 'Java', icon: '/java.png', description: 'Built robust, enterprise-scale applications.' },
-      { name: 'JavaScript', icon: '/javascript.png', description: 'Powered interactive frontend experiences.' },
-      { name: 'TypeScript', icon: '/typescript.png', description: 'Powered interactive frontend experiences.' },
-      { name: 'SQL', icon: '/sql.png', description: 'Managed large scale data in RDBMS' },
-      { name: 'HTML', icon: '/html.png', description: 'Structured semantic and accessible web content.' },
-      { name: 'CSS', icon: '/css.png', description: 'Styled modern and visually appealing user interfaces.' },
+      { name: 'Python', icon: '/python.png', description: 'Used for backend development, AI workflows, automation, and data processing.' },
+      { name: 'C/C++', icon: '/c.png', description: 'Applied in performance-critical components and low-level problem solving.' },
+      { name: 'Java', icon: '/java.png', description: 'Developed structured, object-oriented applications with strong type safety.' },
+      { name: 'JavaScript', icon: '/javascript.png', description: 'Built interactive web interfaces and server-side logic.' },
+      { name: 'TypeScript', icon: '/typescript.png', description: 'Developed scalable frontends with strong typing and improved maintainability.' },
+      { name: 'SQL', icon: '/sql.png', description: 'Designed queries and schemas for relational data modeling and analytics.' },
+      { name: 'HTML', icon: '/html.png', description: 'Structured semantic, accessible, and SEO-friendly web content.' },
+      { name: 'CSS', icon: '/css.png', description: 'Styled responsive, modern user interfaces with attention to UX.' },
     ],
   },
   {
     title: 'Backend Development',
     skills: [
-      { name: 'FastAPI', icon: '/fast.png', description: 'Developed high-performance, scalable backend APIs.' },
-      { name: 'Node.js', icon: '/nodejs.png', description: 'Built fast and efficient server-side applications.' },
-      { name: 'Express.js', icon: '/expressjs.png', description: 'Crafted flexible and minimalist web servers and APIs.' },
+      { name: 'FastAPI', icon: '/fast.png', description: 'Built high-performance APIs with async support and clean architecture.' },
+      { name: 'Node.js', icon: '/nodejs.png', description: 'Implemented scalable backend services and real-time functionality.' },
+      { name: 'Express.js', icon: '/expressjs.png', description: 'Developed lightweight REST APIs and middleware-based services.' },
     ],
   },
   {
     title: 'Frontend Development',
     skills: [
-      { name: 'React.js', icon: '/reactjs.png', description: 'Created dynamic and component-based user interfaces.' },
-      { name: 'Next.js', icon: '/nextjs.png', description: 'Created SEO optimized web applications.' },
-      { name: 'Tailwind CSS', icon: '/tailwind.png', description: 'Rapidly designed custom UIs with a utility-first approach.' },
-      { name: 'Streamlit', icon: '/streamlit.png', description: 'Built and deployed interactive AI & data web apps.' },
+      { name: 'Next.js', icon: '/nextjs.png', description: 'Built production-grade applications with SSR, routing, and SEO optimization.' },
+      { name: 'React.js', icon: '/reactjs.png', description: 'Developed modular, state-driven user interfaces.' },
+      { name: 'Tailwind CSS', icon: '/tailwind.png', description: 'Designed consistent UI systems using a utility-first approach.' },
+      { name: 'Streamlit', icon: '/streamlit.png', description: 'Rapidly prototyped and deployed data-driven and AI-focused web apps.' },
     ],
   },
   {
     title: 'AI & Machine Learning',
     skills: [
-      { name: 'LangChain', icon: '/langchain.png', description: 'Developed applications powered by large language models.' },
-      { name: 'Scikit-learn', icon: '/scikit.png', description: 'Applied classical ML algorithms for data analysis.' },
-      { name: 'YOLO', icon: '/yolo.png', description: 'Implemented real-time object detection models.' },
-      { name: 'OpenCV', icon: '/opencv.png', description: 'Processed and analyzed images and video streams.' },
-      { name: 'NumPy', icon: '/numpy.png', description: 'Performed complex numerical computations efficiently.' },
-      { name: 'Pandas', icon: '/pandas.png', description: 'Manipulated and analyzed large datasets with ease.' },
-      { name: 'Matplotlib', icon: '/matplotlib.png', description: 'Visualized data for analytical purposes.' },
+      { name: 'LangChain', icon: '/langchain.png', description: 'Built LLM-powered applications with tool usage, memory, and orchestration.' },
+      { name: 'Scikit-learn', icon: '/scikit.png', description: 'Applied classical ML algorithms for prediction and data analysis.' },
+      { name: 'YOLO', icon: '/yolo.png', description: 'Implemented real-time object detection pipelines.' },
+      { name: 'OpenCV', icon: '/opencv.png', description: 'Processed images and video streams for computer vision tasks.' },
+      { name: 'NumPy', icon: '/numpy.png', description: 'Performed efficient numerical computations and array operations.' },
+      { name: 'Pandas', icon: '/pandas.png', description: 'Cleaned, transformed, and analyzed structured datasets.' },
+      { name: 'Matplotlib', icon: '/matplotlib.png', description: 'Visualized data trends and experimental results.' },
+      { name: 'HuggingFace', icon: '/huggingface.png', description: 'Integrated pre-trained models and transformers into AI workflows.' },
     ],
   },
   {
-    title: 'Databases',
+    title: 'Database & ORM',
     skills: [
-      { name: 'MySQL', icon: '/mysql.png', description: 'Designed and maintained robust relational databases.' },
-      { name: 'SQLite', icon: '/sql2.png', description: 'Utilized for lightweight, embedded database solutions.' },
-      { name: 'FireBase', icon: '/firebase.png', description: 'Built frontend services that directly syncs with database.' },
-      { name: 'Cloudinary', icon: '/cloudinary.png', description: 'Built systems with streamlined media management.' },
-      { name: 'Redis', icon: '/redis.png', description: 'Built systems with optimized caching.' },
-      { name: 'PostgreSQL', icon: '/postgres.png', description: 'Designed and maintained robust relational databases.' },
-      { name: 'SupaBase', icon: '/supabase.png', description: 'Designed and maintained robust relational databases.' },
+      { name: 'PostgreSQL', icon: '/postgresql.svg', description: 'Designed normalized schemas and optimized complex queries.' },
+      { name: 'MySQL', icon: '/mysql.png', description: 'Managed relational data storage for backend applications.' },
+      { name: 'MongoDB', icon: '/mongodb.svg', description: 'Worked with document-based data models for flexible schemas.' },
+      { name: 'SQLite', icon: '/sql2.png', description: 'Used lightweight databases for local development and testing.' },
+      { name: 'Redis', icon: '/redis.png', description: 'Implemented caching and fast in-memory data access.' },
+      { name: 'SupaBase', icon: '/supabase.png', description: 'Used managed Postgres with auth and storage for rapid development.' },
+      { name: 'FireBase', icon: '/firebase.png', description: 'Built real-time applications with authentication and cloud data sync.' },
+      { name: 'Prisma', icon: '/prisma.svg', description: 'Used type-safe ORM for schema management and database access.' },
+      { name: 'Mongoose', icon: '/mongoose.svg', description: 'Modeled and validated MongoDB data using schema-based design.' },
+      { name: 'SQLAlchemy', icon: '/sqla.svg', description: 'Managed relational data using Python ORM abstractions.' },
     ],
   },
   {
     title: 'Other Frameworks',
     skills: [
-      { name: 'BeautifulSoup', icon: null, description: 'Parsed HTML and XML for web scraping tasks.' },
-      { name: 'Playwright', icon: '/playwright.png', description: 'Automated browser tasks for testing, scraping and Agentic workflows.' },
-      { name: 'Clerk', icon: '/clerk.png', description: 'Implemented seamless user authentication and user billing.' },
-      { name: 'HuggingFace', icon: '/huggingface.png', description: '' },
+      { name: 'BeautifulSoup', icon: null, description: 'Parsed and extracted structured data from HTML websites' },
+      { name: 'Playwright', icon: '/playwright.png', description: 'Automated browsers for testing, scraping, and agent workflows.' },
+      { name: 'Clerk', icon: '/clerk.png', description: 'Integrated authentication, user management, and billing flows.' },
     ],
   },
   {
     title: 'Tools & Utilities',
     skills: [
-      { name: 'Git', icon: '/git.png', description: 'Managed source code versions for collaborative projects.' },
-      { name: 'GitHub', icon: '/github.png', description: 'Hosted and collaborated on software development projects.' },
-      { name: 'Docker', icon: '/docker.png', description: '' },
-      { name: 'Sentry', icon: '/sentry.png', description: 'Monitor critical errors and performance issues.' },
+      { name: 'Git', icon: '/git.png', description: 'Managed version control and collaborative workflows.' },
+      { name: 'GitHub', icon: '/github.png', description: 'Hosted repositories, code reviews, and CI workflows.' },
+      { name: 'Docker', icon: '/docker.png', description: 'Containerized applications for consistent deployments.' },
+      { name: 'Sentry', icon: '/sentry.png', description: 'Monitored runtime errors and performance issues in production.' },
+      { name: 'HTTPie', icon: '/httpie.png', description: 'Tested and debugged APIs via command-line requests.' },
     ],
   },
+  {
+    title: 'Cloud System',
+    skills: [
+      { name: 'FireBase', icon: '/firebase.png', description: 'Deployed cloud-based auth, database, and hosting solutions.' },
+      { name: 'GCP', icon: '/gcp.png', description: 'Used cloud services for scalable backend infrastructure.' },
+      { name: 'Vercel', icon: '/vercel.svg', description: 'Deployed and scaled frontend and serverless applications.' },
+      { name: 'Cloudinary', icon: '/cloudinary.png', description: 'Managed media storage, optimization, and delivery pipelines.' },
+    ],
+  }
+
 ];
 
 // Animation Variants
@@ -394,7 +464,7 @@ const SkillItem: React.FC<{ skill: Skill; delay: number; isVisible: boolean }> =
       custom={delay}
     >
       <div className="relative w-15 h-15 flex items-center justify-center rounded-2xl border border-amber-400/20 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/90 backdrop-blur-xl shadow-[0_4px_16px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] group-hover:border-amber-400/40 group-hover:shadow-[0_8px_24px_rgba(251,191,36,0.2)] transition-all duration-500">
-        
+
         {/* Tooltip */}
         <div className="absolute bottom-full mb-4 w-max max-w-xs px-4 py-3 text-sm font-light text-slate-200 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95 backdrop-blur-xl border border-amber-400/30 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-20"
           style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
@@ -404,12 +474,12 @@ const SkillItem: React.FC<{ skill: Skill; delay: number; isVisible: boolean }> =
         </div>
 
         {icon ? (
-          <Image 
-            src={icon} 
-            alt={name} 
-            width={40} 
-            height={40} 
-            className="object-contain transition-all duration-700 ease-out group-hover:scale-110 group-hover:rotate-[8deg]" 
+          <Image
+            src={icon}
+            alt={name}
+            width={40}
+            height={40}
+            className="object-contain transition-all duration-700 ease-out group-hover:scale-110 group-hover:rotate-[8deg]"
           />
         ) : (
           <span className="text-2xl font-light text-transparent bg-clip-text bg-gradient-to-br from-amber-200 to-amber-400">
@@ -417,7 +487,7 @@ const SkillItem: React.FC<{ skill: Skill; delay: number; isVisible: boolean }> =
           </span>
         )}
       </div>
-      <span 
+      <span
         className="text-sm font-light text-slate-400 group-hover:text-amber-100 transition-colors duration-300 text-center tracking-wide"
         style={{ fontFamily: "'Inter', 'SF Pro Display', sans-serif" }}
       >
@@ -438,7 +508,7 @@ const SkillCategorySection: React.FC<{ category: SkillCategory }> = ({ category 
     <div ref={ref} className="space-y-8">
       <motion.h3
         className="text-2xl md:text-3xl font-light tracking-wide text-transparent bg-clip-text bg-gradient-to-br from-amber-200 via-amber-100 to-slate-200 text-left"
-        style={{ 
+        style={{
           fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
           textShadow: '0 2px 20px rgba(251, 191, 36, 0.15)',
           letterSpacing: '0.05em'
@@ -484,14 +554,14 @@ const SkillCategorySection: React.FC<{ category: SkillCategory }> = ({ category 
 const SkillsSection: React.FC = () => {
   return (
     <section id='skill' className="relative py-24 md:py-36 px-4 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      
+
       {/* Elegant Background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-400/5 rounded-full blur-[200px]" />
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#1e293b08_1px,transparent_1px),linear-gradient(to_bottom,#1e293b08_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_rgba(251,191,36,0.03),transparent_50%)]"></div>
-      
+
       {/* Premium Noise Texture */}
-      <div 
+      <div
         className="absolute inset-0 z-0 opacity-[0.015] mix-blend-overlay"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
@@ -499,7 +569,7 @@ const SkillsSection: React.FC = () => {
       ></div>
 
       <div className="container mx-auto max-w-6xl text-center z-10 relative">
-        
+
         {/* Section Header */}
         <motion.div
           className="mb-20"
@@ -511,7 +581,7 @@ const SkillsSection: React.FC = () => {
         >
           <h2
             className="text-4xl md:text-5xl font-light tracking-wide text-transparent bg-clip-text bg-gradient-to-br from-amber-200 via-amber-100 to-slate-200 mb-4"
-            style={{ 
+            style={{
               fontFamily: "'Cormorant Garamond', 'Playfair Display', Georgia, serif",
               textShadow: '0 2px 30px rgba(251, 191, 36, 0.2)',
               letterSpacing: '0.08em'
@@ -519,7 +589,7 @@ const SkillsSection: React.FC = () => {
           >
             Technology Stack
           </h2>
-          
+
           {/* Decorative Element */}
           <div className="flex items-center justify-center gap-3 mt-6">
             <div className="w-12 h-px bg-gradient-to-r from-transparent to-amber-400/50"></div>

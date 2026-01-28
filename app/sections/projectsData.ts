@@ -20,8 +20,30 @@ export const projectsData = [
     githubUrl: 'https://github.com/skupperr/LifeLens-AI',
     featured: true,
   },
-  {
+    {
     id: 3,
+    tag: 'pulsegit',
+    title: 'PulseGit',
+    description: 'PulseGit is a VS Code extension that tracks real coding activity and syncs it to a dedicated Git repository you control, keeping your GitHub contribution graph meaningful without cluttering project repos.',
+    image: './pulsegit.png',
+    techStack: ['TypeScript', 'VS Code API', 'Node.js', 'Git', 'GitHub'],
+    githubUrl: 'https://github.com/skupperr/pulsegit',
+    liveDemoUrl: 'https://marketplace.visualstudio.com/items?itemName=skupperr.pulse-git',
+    featured: true,
+  },
+  {
+    id: 4,
+    tag: 'learnly-ai',
+    title: 'Learnly AI',
+    description: 'Learnly AI is a SaaS platform for interactive AI tutors with voice-based sessions. Users can explore popular companions, create custom tutors, manage sessions, and track their learning history.',
+    image: './learnlyai_thumb.png',
+    techStack: ['Next.js', 'TypeScript', 'Supabase', 'PostgerSQL', 'Clerk', 'Vapi AI', 'Tailwind CSS', 'shadcn/ui', 'Sentry'],
+    githubUrl: 'https://github.com/skupperr/Learnly-AI-SaaS',
+    liveDemoUrl: 'https://learnly-ai-theta.vercel.app/',
+    featured: false,
+  },
+  {
+    id: 5,
     tag: 'syncup',
     title: 'SyncUp',
     description: 'SyncUp is a modern full-stack social media platform that blends social networking with task management, and career tools. Built to foster authentic, meaningful, and growth-focused online experiences.',
@@ -31,7 +53,7 @@ export const projectsData = [
     featured: false,
   },
   {
-    id: 4,
+    id: 6,
     tag: 'uiu-ibol',
     title: 'UIU-IBOL',
     description: 'Invited by a professor at United International University to build a research-focused website, designed to share ongoing research and outputs of the Research lab.',
@@ -42,7 +64,7 @@ export const projectsData = [
     featured: false,
   },
   {
-    id: 5,
+    id: 7,
     tag: 'football-game',
     title: 'Football Game with JavaFX',
     description: "It's a 2D multiplayer football game with competitive features such as a player marketplace, ranking system, and rewards. The game should allow players to challenge others in 1v1 matches, trade and upgrade players, and engage in various interactive mechanics like messaging and spinning rewards.",
@@ -52,7 +74,7 @@ export const projectsData = [
     featured: false,
   },
   {
-    id: 6,
+    id: 8,
     tag: 'UIU-LMS-info-extractor',
     title: 'UIU-LMS-info-extractor',
     description: "This application uses a variety of technologies, including Web Scraping and web Automation, to obtain participant information for a course that is only accessible to UIU students.",

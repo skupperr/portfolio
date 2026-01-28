@@ -91,7 +91,7 @@ export const projectDetailsData: Record<string, ProjectData> = {
         title: 'LifeLens AI',
         tagline: 'AI-powered unified life management platform',
         description: 'A comprehensive AI-powered personal assistant integrating meal planning, productivity management, career guidance, and financial planning into one intelligent platform.',
-        longDescription: 'LifeLens AI is a groundbreaking all-in-one AI-powered platform designed to serve as your complete personal decision assistant. It seamlessly integrates four critical life management areas—nutrition and meal planning, productivity and time management, career development and learning guidance, and financial planning—into a unified, intelligent web platform. Using advanced language models, sophisticated prompt engineering with LangChain, and machine learning algorithms, LifeLens AI provides deeply personalized recommendations that continuously adapt to your evolving lifestyle, preferences, and goals. The platform features a central conversational AI that understands context across all modules, creating a truly integrated experience where your meal plans consider your budget, your productivity goals align with career objectives, and financial decisions reflect your lifestyle choices.',
+        longDescription: 'LifeLens AI is a groundbreaking all-in-one AI-powered platform designed to serve as your complete personal decision assistant. It seamlessly integrates four critical life management areas-nutrition and meal planning, productivity and time management, career development and learning guidance, and financial planning-into a unified, intelligent web platform. Using advanced language models, sophisticated prompt engineering with LangChain, and machine learning algorithms, LifeLens AI provides deeply personalized recommendations that continuously adapt to your evolving lifestyle, preferences, and goals. The platform features a central conversational AI that understands context across all modules, creating a truly integrated experience where your meal plans consider your budget, your productivity goals align with career objectives, and financial decisions reflect your lifestyle choices.',
         image: '/lifelens_thumbnail.png',
         gallery: [
             '/lifelens1.png',
@@ -173,9 +173,9 @@ export const projectDetailsData: Record<string, ProjectData> = {
             'Microservices architecture for scalability',
             'Personalized insights with learning algorithms',
         ],
-        challenges: 'The primary challenge was creating a truly unified platform that handles vastly different user needs—from meal planning to financial management—while maintaining high performance and providing genuinely personalized experiences. Each module required different AI prompting strategies and data models, yet they all needed to work together seamlessly. Ensuring that the AI assistant could understand context across modules (e.g., suggesting stock-friendly meals when products are limited) was technically complex. Managing real-time updates across multiple concurrent users while keeping Redis cache synchronized with MySQL was another significant challenge. Additionally, designing a prompt engineering system with LangChain that could generate consistently high-quality, personalized responses across diverse domains required extensive testing and iteration.',
+        challenges: 'The primary challenge was creating a truly unified platform that handles vastly different user needs-from meal planning to financial management-while maintaining high performance and providing genuinely personalized experiences. Each module required different AI prompting strategies and data models, yet they all needed to work together seamlessly. Ensuring that the AI assistant could understand context across modules (e.g., suggesting stock-friendly meals when products are limited) was technically complex. Managing real-time updates across multiple concurrent users while keeping Redis cache synchronized with MySQL was another significant challenge. Additionally, designing a prompt engineering system with LangChain that could generate consistently high-quality, personalized responses across diverse domains required extensive testing and iteration.',
         solutions: 'Implemented a sophisticated microservices architecture where each life management domain operates as an independent service but shares context through a central API gateway. Used Redis for high-performance caching and real-time data synchronization, reducing database queries by 60%. Developed a comprehensive prompt engineering framework with LangChain that maintains conversation context across modules, using few-shot learning and dynamic prompt templates tailored to each domain. Implemented a user profiling system that builds detailed preference models over time, enabling increasingly accurate personalization. Created a state management system that tracks user activities across modules, allowing the AI to make cross-domain recommendations (e.g., adjusting meal plans based on productivity goals or suggesting career courses aligned with time availability). Built a robust MySQL schema with optimized indexing for complex queries while leveraging Redis for frequently accessed data. Integrated Clerk for secure, scalable authentication with minimal backend overhead.',
-        outcome: 'Successfully launched a production-ready platform that provides users with an unprecedented level of integrated life management. The unified AI assistant achieves 85% user satisfaction rating for recommendation quality. Users report 40% improvement in decision-making confidence and 30% better goal achievement rates across tracked areas. The platform handles 1,000+ concurrent users with sub-200ms response times thanks to Redis caching and optimized architecture. Average user session duration exceeds 25 minutes, indicating strong engagement. The cross-module intelligence successfully identifies patterns—users who utilize the meal planner and productivity features together show 50% better adherence to health goals. The financial module has helped users identify average savings opportunities of 15% through AI-driven spending analysis. The platform demonstrates the viability of creating truly intelligent, context-aware personal assistants that understand users holistically rather than in isolated domains.',
+        outcome: 'Successfully launched a production-ready platform that provides users with an unprecedented level of integrated life management. The unified AI assistant achieves 85% user satisfaction rating for recommendation quality. Users report 40% improvement in decision-making confidence and 30% better goal achievement rates across tracked areas. The platform handles 1,000+ concurrent users with sub-200ms response times thanks to Redis caching and optimized architecture. Average user session duration exceeds 25 minutes, indicating strong engagement. The cross-module intelligence successfully identifies patterns-users who utilize the meal planner and productivity features together show 50% better adherence to health goals. The financial module has helped users identify average savings opportunities of 15% through AI-driven spending analysis. The platform demonstrates the viability of creating truly intelligent, context-aware personal assistants that understand users holistically rather than in isolated domains.',
         githubUrl: 'https://github.com/skupperr/LifeLens-AI',
         liveDemoUrl: '',
         duration: '3 months',
@@ -372,9 +372,9 @@ export const projectDetailsData: Record<string, ProjectData> = {
             'Exports to Excel for easy data sharing',
             'User-friendly desktop application',
         ],
-        challenges: 'The primary challenge was creating a reliable web scraper that could navigate UIU\'s Learning Management System, which required authenticated access and had dynamic content loading. The LMS uses JavaScript-heavy pages with complex DOM structures, making traditional scraping difficult. Additionally, manual data collection was taking club organizers 40-50 minutes per course to gather student emails from multiple courses. The tool needed to be fast enough to handle hundreds of students across multiple courses while being simple enough for non-technical club members to use. Security was also a concern—credentials needed to be handled safely without storage.',
+        challenges: 'The primary challenge was creating a reliable web scraper that could navigate UIU\'s Learning Management System, which required authenticated access and had dynamic content loading. The LMS uses JavaScript-heavy pages with complex DOM structures, making traditional scraping difficult. Additionally, manual data collection was taking club organizers 40-50 minutes per course to gather student emails from multiple courses. The tool needed to be fast enough to handle hundreds of students across multiple courses while being simple enough for non-technical club members to use. Security was also a concern-credentials needed to be handled safely without storage.',
         solutions: 'Implemented Playwright for browser automation to handle JavaScript-rendered content and complex authentication flows, allowing the tool to interact with the LMS just like a real user. Used BeautifulSoup for efficient HTML parsing once pages were loaded. Integrated Python\'s multiprocessing module to process multiple courses in parallel, reducing total extraction time from 3+ minutes to under 30 seconds for typical use cases. Built a clean Tkinter GUI that prompts for credentials at runtime (never storing them), allows course selection through links. Added automatic Excel export, organizing data into sheets by course for easy distribution to club members.',
-        outcome: 'Successfully deployed a desktop application that transformed how UIU student organizations collect contact information. The tool reduced data collection time from 40 minutes of manual work to under 30 seconds of automated extraction—an 95+% efficiency improvement. Multiple student clubs including the Computer Club, Debate Club, and Cultural Club now use this tool regularly for event communications. Club organizers reported significantly improved workflow efficiency, allowing them to focus more on event planning rather than administrative tasks. The tool has become an essential utility for campus organizations at UIU.',
+        outcome: 'Successfully deployed a desktop application that transformed how UIU student organizations collect contact information. The tool reduced data collection time from 40 minutes of manual work to under 30 seconds of automated extraction-an 95+% efficiency improvement. Multiple student clubs including the Computer Club, Debate Club, and Cultural Club now use this tool regularly for event communications. Club organizers reported significantly improved workflow efficiency, allowing them to focus more on event planning rather than administrative tasks. The tool has become an essential utility for campus organizations at UIU.',
         githubUrl: 'https://github.com/skupperr/UIU-LMS-info-extractor',
         liveDemoUrl: '',
         duration: '1 week',
@@ -383,100 +383,267 @@ export const projectDetailsData: Record<string, ProjectData> = {
         year: '2023',
     },
     'syncup': {
-    tag: 'syncup',
-    title: 'SyncUp',
-    tagline: 'Where social networking meets real productivity.',
-    description: 'A full-stack social platform that blends social networking, task management, messaging, and career tools into one cohesive ecosystem.',
-    longDescription:
-        'SyncUp is a modern social networking platform built to solve a simple problem: current social apps are great at engagement but terrible at helping people grow. SyncUp flips that script by merging social features with real productivity tools such as tasks, job opportunities, reminders, and location sharing, all inside a clean, fast, and student-friendly interface. The entire system runs on a custom Node.js + Express backend with MySQL, enabling real-time interactions, secure media uploads, and personalized content feeds.',
-    image: '/syuncup_thumbnail.png',
-    gallery: [
-    ],
+        tag: 'syncup',
+        title: 'SyncUp',
+        tagline: 'Where social networking meets real productivity.',
+        description: 'A full-stack social platform that blends social networking, task management, messaging, and career tools into one cohesive ecosystem.',
+        longDescription:
+            'SyncUp is a modern social networking platform built to solve a simple problem: current social apps are great at engagement but terrible at helping people grow. SyncUp flips that script by merging social features with real productivity tools such as tasks, job opportunities, reminders, and location sharing, all inside a clean, fast, and student-friendly interface. The entire system runs on a custom Node.js + Express backend with MySQL, enabling real-time interactions, secure media uploads, and personalized content feeds.',
+        image: '/syuncup_thumbnail.png',
+        gallery: [
+        ],
 
-    techStack: {
-        frontend: ['HTML', 'CSS', 'JavaScript'],
-        backend: ['Node.js', 'Express', 'Cloudinary'],
-        database: ['MySQL'],
-        other: ['Firebase for real-time messaging'],
+        techStack: {
+            frontend: ['HTML', 'CSS', 'JavaScript'],
+            backend: ['Node.js', 'Express', 'Cloudinary'],
+            database: ['MySQL'],
+            other: ['Firebase for real-time messaging'],
+        },
+
+        features: [
+            {
+                title: '📱 Social Feed & Media Posting',
+                description:
+                    'Post text, photos, or videos; interact through likes, comments, shares, and save-for-later. Engagement tracking is included.',
+                images: ['/syncup1.png'],
+            },
+            {
+                title: '🙍 Profile & Friend System',
+                description:
+                    'Customizable profiles, friend requests, and social connections built on a relational database structure for optimized queries.',
+                images: ['/syncup2.png', '/syncup3.png', '/syncup9.png'],
+            },
+            {
+                title: '🧠 Personalized Feed Filters',
+                description:
+                    'Users can filter their feed by interest or profession. The backend dynamically adjusts feed ranking based on user-selected categories.',
+                images: [],
+            },
+            {
+                title: '📍 Real-Time Location Sharing',
+                description:
+                    'Built-in location sharing with trusted friends, toggled on and off instantly. Designed with privacy and user control at the center.',
+                images: ['/suncup4.jpg'],
+            },
+            {
+                title: '🧩 Group & Personal Tasks',
+                description:
+                    'Create tasks, assign them to friends, track progress, and manage group productivity. Perfect for student groups and project teams.',
+                images: ['/syncup4.png', '/syncup5.png'],
+            },
+            {
+                title: '💼 Job Marketplace',
+                description:
+                    'A community-driven job board where anyone can post or apply to jobs directly inside the platform.',
+                images: ['/syncup6.png', '/syncup7.png', '/syncup8.png'],
+            },
+            {
+                title: '🔍 Online Buy/Sell Marketplace',
+                description:
+                    'A built-in marketplace for users to list used items, browse products, and make safer peer-to-peer exchanges.',
+                images: ['/syncup10.png', '/syncup11.png', '/syncup12.png', '/syncup13.png'],
+            },
+            {
+                title: '💬 Real-Time Chat',
+                description:
+                    'Messaging powered by Firebase for instant delivery, typing indicators, and a smooth chat experience.',
+                images: ['/syncup14.png'],
+            },
+            {
+                title: '📊 Content Analytics',
+                description:
+                    'Every user can review insights on their posted content - views, likes, saves - helping them understand what resonates.',
+                images: ['/syncup15.png'],
+            },
+        ],
+
+        keyHighlights: [
+            'Unified social + productivity ecosystem',
+            'Fully custom Node.js backend with optimized SQL schema',
+            'Real-time chat and location sharing',
+            'Integrated job board and marketplace',
+        ],
+
+        challenges:
+            'Most social apps encourage passive scrolling and distraction. Students and young professionals need a platform that makes staying connected productive instead of draining.',
+        solutions:
+            'Built a platform that merges social features with actionable tools - tasks, jobs, reminders, and analytics - so users benefit from being active, not just entertained.',
+        outcome:
+            'Created a full-scale, multi-feature social platform that drives purposeful online interactions. The system improves coordination, reduces friction, and supports personal and professional growth.',
+
+        githubUrl: 'https://github.com/skupperr/SyncUP',
+        liveDemoUrl: '',
+        duration: '3 Months',
+        team: 'Duo Project',
+        role: 'Full-Stack Developer',
+        year: '2024',
     },
-
-    features: [
-        {
-            title: '📱 Social Feed & Media Posting',
-            description:
-                'Post text, photos, or videos; interact through likes, comments, shares, and save-for-later. Engagement tracking is included.',
-            images: ['/syncup1.png'],
+    'learnly-ai': {
+        tag: 'learnly-ai',
+        title: 'Learnly AI - A SaaS platform',
+        tagline: 'Learn through conversation, not repetition.',
+        description: 'A modern SaaS-style AI learning platform that lets students and self-learners engage in real-time, voice-based tutoring sessions with AI companions.',
+        longDescription: 'Learnly AI is a full-stack, production-oriented SaaS application designed to explore how modern learning platforms are built using best-in-class, composable technologies. The platform enables users to interact with AI-powered voice tutors tailored to specific subjects and topics, manage learning sessions, and access subscription-gated features. Rather than focusing on deployment, the project emphasizes system design, security, scalability, and real-world SaaS architecture patterns used in modern production environments.',
+        image: '/learnlyai_thumb.png',
+        gallery: [
+            '',
+            // '/learnlyai_1.png',
+            // '/learnlyai_2.png',
+        ],
+        techStack: {
+            frontend: ['Next.js', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'],
+            backend: ['Next.js Server Actions', 'Clerk auth & billing', 'Clerk Webhooks', 'Vapi AI'],
+            database: ['Supabase (PostgreSQL)', 'Row-Level Security'],
+            other: ['Zod', 'Sentry'],
         },
-        {
-            title: '🙍 Profile & Friend System',
-            description:
-                'Customizable profiles, friend requests, and social connections built on a relational database structure for optimized queries.',
-            images: ['/syncup2.png', '/syncup3.png', '/syncup9.png'],
+        features: [
+            {
+                title: '🧭 Companion Discovery & Creation',
+                description: 'Browse popular AI companions, revisit recent sessions, explore tutors created by other users, and create custom companions with specific subjects, topics, and conversational styles.',
+                images: [
+                    '/learnlyai_home.png',       // homepage: popular companions + recent sessions
+                    '/learnlyai_discover.png',   // explore page: search & filter companions
+                ],
+            },
+            {
+                title: '🎙️ AI Voice Companions',
+                description: 'Engage in low-latency, real-time voice conversations with AI tutors specialized by subject, topic, and conversational style.',
+                images: ['/learnlyai_voice.png'],
+            },
+            {
+                title: '🔐 Authentication & Subscriptions',
+                description: 'Secure authentication, OAuth, and subscription-based feature access powered by Clerk, including plan upgrades and gated functionality.',
+                images: ['/learnly_billing.png'],
+            },
+            {
+                title: '📚 Session History & Bookmarks',
+                description: 'Save and revisit learning sessions, organize companions, and access conversation history based on subscription tier.',
+                images: ['/learnlyai_history.png'],
+            },
+            {
+                title: '🛡️ Server-Enforced Security',
+                description: 'All sensitive data access is enforced at the database level using Supabase Row-Level Security, following least-privilege principles.',
+                images: [],
+            },
+        ],
+        keyHighlights: [
+            'Voice-first AI tutoring experience',
+            'Subscription-aware feature gating',
+            'Strict server-side access control (RLS)',
+            'Highly modular and reusable codebase',
+        ],
+        challenges: 'Building a SaaS system that handles authentication, billing, session tracking, and AI voice interactions without introducing security gaps or unnecessary complexity.',
+        solutions: 'Leveraged specialized platforms like Clerk for auth and billing, Supabase for relational data with RLS, and Vapi AI for voice interactions, allowing the system to remain secure, scalable, and maintainable without reinventing foundational infrastructure.',
+        outcome: 'Successfully designed and implemented a full SaaS-style learning platform that mirrors real-world production architecture, providing deep hands-on experience with modern SaaS system design, security, and platform integration.',
+        githubUrl: 'https://github.com/skupperr/SaaS-LMS',
+        liveDemoUrl: 'https://learnly-ai-theta.vercel.app/',
+        duration: '4 Days',
+        team: 'Solo Project',
+        role: 'Full-Stack Engineer',
+        year: '2026',
+    },
+    'pulsegit': {
+        tag: 'pulsegit',
+        title: 'PulseGit',
+        tagline: 'Track your real coding effort, not just commits.',
+        description: 'A VS Code extension that quietly tracks your coding activity and snapshots it to a Git repository you control, giving an accurate reflection of your work without cluttering project repos.',
+        longDescription: 'PulseGit is a VS Code extension designed for developers who want their GitHub contribution graph to reflect actual coding activity. It tracks files edited, languages used, and lines changed, creating timestamped JSON snapshots of your work. These snapshots are pushed automatically to a user-configured repository, allowing you to learn, experiment, and develop without creating unnecessary commits in project repos. PulseGit works offline and provides clear notifications for sync status, making your contribution graph meaningful without compromising workflow.',
+        image: '/pulsegit.png',
+        gallery: [
+        ],
+        techStack: {
+            frontend: [],
+            backend: [],
+            database: [],
+            other: ['TypeScript', 'VS Code API', 'Node.js', 'Git', 'GitHub'],
         },
-        {
-            title: '🧠 Personalized Feed Filters',
-            description:
-                'Users can filter their feed by interest or profession. The backend dynamically adjusts feed ranking based on user-selected categories.',
-            images: [],
-        },
-        {
-            title: '📍 Real-Time Location Sharing',
-            description:
-                'Built-in location sharing with trusted friends, toggled on and off instantly. Designed with privacy and user control at the center.',
-            images: ['/suncup4.jpg'],
-        },
-        {
-            title: '🧩 Group & Personal Tasks',
-            description:
-                'Create tasks, assign them to friends, track progress, and manage group productivity. Perfect for student groups and project teams.',
-            images: ['/syncup4.png', '/syncup5.png'],
-        },
-        {
-            title: '💼 Job Marketplace',
-            description:
-                'A community-driven job board where anyone can post or apply to jobs directly inside the platform.',
-            images: ['/syncup6.png', '/syncup7.png', '/syncup8.png'],
-        },
-        {
-            title: '🔍 Online Buy/Sell Marketplace',
-            description:
-                'A built-in marketplace for users to list used items, browse products, and make safer peer-to-peer exchanges.',
-            images: ['/syncup10.png', '/syncup11.png', '/syncup12.png', '/syncup13.png'],
-        },
-        {
-            title: '💬 Real-Time Chat',
-            description:
-                'Messaging powered by Firebase for instant delivery, typing indicators, and a smooth chat experience.',
-            images: ['/syncup14.png'],
-        },
-        {
-            title: '📊 Content Analytics',
-            description:
-                'Every user can review insights on their posted content — views, likes, saves — helping them understand what resonates.',
-            images: ['/syncup15.png'],
-        },
-    ],
-
-    keyHighlights: [
-        'Unified social + productivity ecosystem',
-        'Fully custom Node.js backend with optimized SQL schema',
-        'Real-time chat and location sharing',
-        'Integrated job board and marketplace',
-    ],
-
-    challenges:
-        'Most social apps encourage passive scrolling and distraction. Students and young professionals need a platform that makes staying connected productive instead of draining.',
-    solutions:
-        'Built a platform that merges social features with actionable tools — tasks, jobs, reminders, and analytics — so users benefit from being active, not just entertained.',
-    outcome:
-        'Created a full-scale, multi-feature social platform that drives purposeful online interactions. The system improves coordination, reduces friction, and supports personal and professional growth.',
-    
-    githubUrl: 'https://github.com/skupperr/SyncUP',
-    liveDemoUrl: '',
-    duration: '3 Months',
-    team: 'Duo Project',
-    role: 'Full-Stack Developer',
-    year: '2024',
-},
+        features: [
+            {
+                title: '📈 Real Coding Activity Tracking',
+                description: 'Tracks files edited, programming languages used, and lines changed to reflect actual coding effort - not just commits.',
+                images: [],
+            },
+            {
+                title: '🗂️ Dedicated Activity Repository',
+                description: 'All activity snapshots are pushed to a single, user-controlled Git repository instead of cluttering project repositories.',
+                images: [],
+            },
+            {
+                title: '🔓 No Project Repo Required',
+                description: 'Track coding activity while learning, experimenting, or demoing without needing a Git repository for the work itself.',
+                images: [],
+            },
+            {
+                title: '🔐 Token-Free Authentication',
+                description: 'Uses your existing VS Code GitHub authentication - no personal access tokens or extra permissions required.',
+                images: [],
+            },
+            {
+                title: '⏱️ Automatic Snapshot Scheduling',
+                description: 'Creates activity snapshots automatically at configurable time intervals, with a minimum interval safeguard.',
+                images: [],
+            },
+            {
+                title: '⚡ Manual Force Snapshot',
+                description: 'Instantly capture and sync activity using a status bar button or command palette action.',
+                images: [],
+            },
+            {
+                title: '📦 Timestamped JSON Snapshots',
+                description: 'Stores activity as structured, timestamped JSON files for transparency, auditability, and long-term tracking.',
+                images: [],
+            },
+            {
+                title: '📡 Offline-First Design',
+                description: 'Continues recording activity while offline and automatically retries syncing when connectivity is restored.',
+                images: [],
+            },
+            {
+                title: '🚨 Intelligent Error Handling',
+                description: 'Detects common Git errors such as missing repositories or permission issues and shows clear, actionable messages.',
+                images: [],
+            },
+            {
+                title: '🔁 Smart Retry Logic',
+                description: 'Retries Git pushes only when failures are recoverable (e.g. offline), avoiding endless failed attempts.',
+                images: [],
+            },
+            {
+                title: '🔕 Configurable Notifications',
+                description: 'Control when and how PulseGit notifies you about successful syncs, failures, or offline retries.',
+                images: [],
+            },
+            {
+                title: '🛑 One-Click Disable',
+                description: 'Pause all tracking instantly from settings without uninstalling the extension.',
+                images: [],
+            },
+            {
+                title: '🔄 Safe Repo Switching',
+                description: 'Switch activity repositories safely - PulseGit cleans up and reinitializes without mixing data.',
+                images: [],
+            },
+            {
+                title: '🕵️ Privacy-First by Design',
+                description: 'No external servers, analytics, or dashboards - all data stays local and in your Git repository.',
+                images: [],
+            },
+        ],
+        keyHighlights: [
+            'Works without requiring project repos',
+            'Offline support with automatic retries',
+            'No GitHub token required - Uses existing VS Code GitHub authentication ',
+            'All data stays locally, no external servers, analytics, or dashboards',
+        ],
+        challenges: "There are very few tools that track real, day-to-day coding activity, so a large portion of genuine work never shows up on GitHub at all. On top of that, Most GitHub tracking extensions require committing to your project repos, cluttering them and preventing experimentation or learning without a repo. They often need GitHub tokens and can’t push to alternate repositories safely.",
+        solutions: 'Implemented a VS Code extension that tracks coding activity independently of project repositories, pushes snapshots only to a dedicated repo, and handles offline and error scenarios with clear notifications.',
+        outcome: 'Successfully deployed a lightweight VS Code extension that allows developers to track and visualize their coding activity accurately, without polluting project repositories. Enhances learning, experimentation, and contribution tracking.',
+        githubUrl: 'https://github.com/skupperr/pulsegit',
+        liveDemoUrl: 'https://marketplace.visualstudio.com/items?itemName=skupperr.pulsegit',
+        duration: '3 Days',
+        team: 'Solo Project',
+        role: 'Developer',
+        year: '2026',
+    }
 
 };
